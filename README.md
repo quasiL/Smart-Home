@@ -7,3 +7,9 @@ Události během činnosti programu jsou generovány náhodně. Pro definování
 Některá zařízení mají nastavitelná nastavení. Pro obnovení jejich základní konfigurace nebo uložení aktuálního nastavení pro pozdější použití se používá pattern **Snapshot**.
 
 Uživatel může určit, které statistiky ho zajímají a které ne. Každé zařízení generuje kompletní statistiku. K vytvoření dílčí statistiky se používá pattern **Visitor**.
+
+# Use case model
+![](resources/use_case_model.png) 
+
+# Class diagram
+![](resources/class_diagram.png) 

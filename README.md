@@ -1,3 +1,5 @@
+# Popis
+
 Pattern **Builder** se používá k sestavení různých konfigurací domů na základě globálního konfiguračního souboru.
 
 Události během činnosti programu jsou generovány náhodně. Pro definování události a možnosti jejího následného zpracování se používá pattern **Chain of Responsibility**. Poté je třeba o této události informovat některé typy zařízení. K tomu se používá pattern **Observer**.

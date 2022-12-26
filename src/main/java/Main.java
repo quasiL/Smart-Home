@@ -1,5 +1,7 @@
-public class Main {
-    int a;
-    // test branch 00
-    // Upravim neco
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+    }
 }

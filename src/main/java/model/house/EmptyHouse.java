@@ -10,6 +10,6 @@ public class EmptyHouse extends House
         super(List.of("GatesController",
                         "LightController"),
                 1,
-                1);
+                2);
     }
 }

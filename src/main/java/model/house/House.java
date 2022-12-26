@@ -29,6 +29,11 @@ public abstract class House implements HouseConfiguration
         return rooms;
     }
 
+    public void addRoom(Room room)
+    {
+        rooms.add(room);
+    }
+
     public int getNumberOfFloors()
     {
         return numberOfFloors;

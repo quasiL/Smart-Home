@@ -9,6 +9,8 @@ public interface HouseConfiguration
 
     List<Room> getRooms();
 
+    void addRoom(Room room);
+
     int getNumberOfFloors();
 
     int getNumberOfRoomsPerFloor();

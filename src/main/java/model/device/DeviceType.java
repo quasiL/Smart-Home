@@ -1,0 +1,13 @@
+package model.device;
+
+public enum DeviceType
+{
+    GATE_CONTROLLER,
+    CLIMATE_CONTROLLER,
+    LIGHT_CONTROLLER,
+    HOME_ASSISTANT,
+    SOUND_SYSTEM,
+    WATER_COUNTER,
+    SIGNALING,
+    CAR_DIAGNOSTIC
+}

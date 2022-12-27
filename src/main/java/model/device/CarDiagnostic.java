@@ -2,8 +2,13 @@ package model.device;
 
 public class CarDiagnostic extends Device
 {
-    public CarDiagnostic(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public CarDiagnostic(String name,
+                         String manufacturer,
+                         String firmwareVersion,
+                         Battery battery,
+                         NetworkSettings networkSettings,
+                         int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.CAR_DIAGNOSTIC, battery, networkSettings, guarantee);
     }
 }

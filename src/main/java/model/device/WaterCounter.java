@@ -2,8 +2,13 @@ package model.device;
 
 public class WaterCounter extends Device
 {
-    public WaterCounter(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public WaterCounter(String name,
+                        String manufacturer,
+                        String firmwareVersion,
+                        Battery battery,
+                        NetworkSettings networkSettings,
+                        int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.WATER_COUNTER, battery, networkSettings, guarantee);
     }
 }

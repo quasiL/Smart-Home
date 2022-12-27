@@ -2,8 +2,13 @@ package model.device;
 
 public class HomeAssistant extends Device
 {
-    public HomeAssistant(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public HomeAssistant(String name,
+                         String manufacturer,
+                         String firmwareVersion,
+                         Battery battery,
+                         NetworkSettings networkSettings,
+                         int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.HOME_ASSISTANT, battery, networkSettings, guarantee);
     }
 }

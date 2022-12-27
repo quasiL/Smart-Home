@@ -2,8 +2,13 @@ package model.device;
 
 public class LightController extends Device
 {
-    public LightController(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public LightController(String name,
+                           String manufacturer,
+                           String firmwareVersion,
+                           Battery battery,
+                           NetworkSettings networkSettings,
+                           int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.LIGHT_CONTROLLER, battery, networkSettings, guarantee);
     }
 }

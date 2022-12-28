@@ -37,7 +37,11 @@ public abstract class Device implements BasicActions
 
     public void countElectricity() {}
     public void createReports() {}
-    public void restart() {}
+    public void restart()
+    {
+        //add something to the log
+        enable = true;
+    }
     public void synchronizeTime() {}
 
     public LocalDate getGuarantee()

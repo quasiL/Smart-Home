@@ -1,14 +1,14 @@
 package model.device;
 
-public class LightController extends Device
+public class WaterController extends Device
 {
-    public LightController(String name,
+    public WaterController(String name,
                            String manufacturer,
                            String firmwareVersion,
                            Battery battery,
                            NetworkSettings networkSettings,
                            int guarantee)
     {
-        super(name, manufacturer, firmwareVersion, DeviceType.LIGHT_CONTROLLER, battery, networkSettings, guarantee);
+        super(name, manufacturer, firmwareVersion, DeviceType.WATER_CONTROLLER, battery, networkSettings, guarantee);
     }
 }

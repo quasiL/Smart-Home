@@ -4,60 +4,84 @@ import model.Event;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public abstract class Device
+public abstract class Device implements BasicActions
 {
+    private final String name;
+    private final String manufacturer;
+    private final String firmwareVersion;
+    private final DeviceType type;
+    private boolean enable;
+    private final Battery battery;
+    private NetworkSettings networkSettings;
     private final LocalDate guarantee;
-    private final int id;
-    private final String ipAddress;
-    private final String macAddress;
-    private final String model;
-    private boolean status;
     private final LocalDateTime timeFromStart;
 
-    public Device(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public Device(String name,
+                  String manufacturer,
+                  String firmwareVersion,
+                  DeviceType type,
+                  Battery battery,
+                  NetworkSettings networkSettings,
+                  int guarantee)
     {
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.firmwareVersion = firmwareVersion;
+        this.type = type;
+        this.battery = battery;
+        this.networkSettings = networkSettings;
         this.guarantee = LocalDate.now().plusYears(guarantee);
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.macAddress = macAddress;
-        this.model = model;
-        this.status = false;
         this.timeFromStart = LocalDateTime.from(LocalDateTime.now());
+        this.enable = true;
     }
+
+    public void countElectricity() {}
+    public void createReports() {}
+    public void restart() {}
+    public void synchronizeTime() {}
 
     public LocalDate getGuarantee()
     {
         return guarantee;
     }
 
-    public int getId()
-    {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public String getIpAddress()
-    {
-        return ipAddress;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public String getMacAddress()
-    {
-        return macAddress;
+    public String getFirmwareVersion() {
+        return firmwareVersion;
     }
 
-    public String getModel()
+    public DeviceType getType() {
+        return type;
+    }
+
+    public Battery getBattery() {
+        return battery;
+    }
+
+    public NetworkSettings getNetworkSettings() {
+        return networkSettings;
+    }
+
+    public void setNetworkSettings(NetworkSettings networkSettings)
     {
-        return model;
+        this.networkSettings = networkSettings;
     }
 
     public boolean getStatus()
     {
-        return status;
+        return enable;
     }
 
     public void setStatus(boolean status)
     {
-        this.status = status;
+        this.enable = status;
     }
 
     public LocalDateTime getTimeFromStart()

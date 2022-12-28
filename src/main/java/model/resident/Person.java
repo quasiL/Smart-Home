@@ -1,10 +1,10 @@
 package model.resident;
 
-public class Human extends Resident
+public class Person extends Resident
 {
     private TypeOfAction action;
 
-    public Human(String name, int age)
+    public Person(String name, int age)
     {
         super(name, age);
     }

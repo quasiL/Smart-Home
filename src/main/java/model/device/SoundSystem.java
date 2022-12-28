@@ -2,8 +2,13 @@ package model.device;
 
 public class SoundSystem extends Device
 {
-    public SoundSystem(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public SoundSystem(String name,
+                       String manufacturer,
+                       String firmwareVersion,
+                       Battery battery,
+                       NetworkSettings networkSettings,
+                       int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.SOUND_SYSTEM, battery, networkSettings, guarantee);
     }
 }

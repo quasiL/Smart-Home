@@ -1,14 +1,14 @@
 package model.device;
 
-public class ClimateController extends Device
+public class TemperatureSensor extends Device
 {
-    public ClimateController(String name,
+    public TemperatureSensor(String name,
                              String manufacturer,
                              String firmwareVersion,
                              Battery battery,
                              NetworkSettings networkSettings,
                              int guarantee)
     {
-        super(name, manufacturer, firmwareVersion, DeviceType.CLIMATE_CONTROLLER, battery, networkSettings, guarantee);
+        super(name, manufacturer, firmwareVersion, DeviceType.TEMPERATURE_SENSOR, battery, networkSettings, guarantee);
     }
 }

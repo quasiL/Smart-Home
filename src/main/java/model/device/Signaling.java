@@ -2,8 +2,13 @@ package model.device;
 
 public class Signaling extends Device
 {
-    public Signaling(int guarantee, int id, String ipAddress, String macAddress, String model)
+    public Signaling(String name,
+                     String manufacturer,
+                     String firmwareVersion,
+                     Battery battery,
+                     NetworkSettings networkSettings,
+                     int guarantee)
     {
-        super(guarantee, id, ipAddress, macAddress, model);
+        super(name, manufacturer, firmwareVersion, DeviceType.SIGNALING, battery, networkSettings, guarantee);
     }
 }

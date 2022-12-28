@@ -12,7 +12,7 @@ public abstract class Device implements BasicActions
     private final DeviceType type;
     private boolean enable;
     private final Battery battery;
-    private final NetworkSettings networkSettings;
+    private NetworkSettings networkSettings;
     private final LocalDate guarantee;
     private final LocalDateTime timeFromStart;
 
@@ -67,6 +67,11 @@ public abstract class Device implements BasicActions
 
     public NetworkSettings getNetworkSettings() {
         return networkSettings;
+    }
+
+    public void setNetworkSettings(NetworkSettings networkSettings)
+    {
+        this.networkSettings = networkSettings;
     }
 
     public boolean getStatus()

@@ -1,10 +1,10 @@
 package service.builder;
 
 import model.device.Battery;
-import model.device.GateController;
+import model.device.LightController;
 import model.device.NetworkSettings;
 
-public class GateControllerBuilder implements DeviceBuilder
+public class LightControllerBuilder implements DeviceBuilder
 {
     private String name;
     private String manufacturer;
@@ -49,8 +49,8 @@ public class GateControllerBuilder implements DeviceBuilder
         this.guarantee = guarantee;
     }
 
-    public GateController getResult()
+    public LightController getResult()
     {
-        return new GateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee);
+        return new LightController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee);
     }
 }

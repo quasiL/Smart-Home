@@ -1,13 +1,12 @@
+import model.device.*;
+import service.builder.ClimateControllerBuilder;
+import service.builder.Director;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import model.device.Battery;
-import model.device.NetworkSettings;
-import model.device.ClimateController;
-import service.builder.ClimateControllerBuilder;
-import service.builder.Director;
 
 public class BuilderTest
 {
@@ -24,7 +23,8 @@ public class BuilderTest
                 "3.1",
                 new Battery(),
                 new NetworkSettings(),
-                2);
+                2,
+                1);
     }
 
     // TODO Write parametrized test for all types of devices instead of this
@@ -34,7 +34,7 @@ public class BuilderTest
     {
         director = new Director();
         climateControllerBuilder = new ClimateControllerBuilder();
-        director.buildClimateController(climateControllerBuilder);
+        director.buildClimateController(climateControllerBuilder, 1);
         ClimateController newClimateController = climateControllerBuilder.getResult();
         Assertions.assertEquals(newClimateController.getName(), climateController.getName());
         Assertions.assertEquals(newClimateController.getManufacturer(), climateController.getManufacturer());
@@ -48,8 +48,8 @@ public class BuilderTest
     {
         climateControllerBuilder = Mockito.mock(ClimateControllerBuilder.class);
         director = Mockito.mock(Director.class);
-        director.buildClimateController(climateControllerBuilder);
-        Mockito.verify(director).buildClimateController(climateControllerBuilder);
+        director.buildClimateController(climateControllerBuilder, 1);
+        Mockito.verify(director).buildClimateController(climateControllerBuilder, 1);
         Mockito.when(climateControllerBuilder.getResult()).thenReturn(climateController);
     }
 }

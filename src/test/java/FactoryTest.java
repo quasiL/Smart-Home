@@ -1,13 +1,14 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import model.house.EmptyHouse;
 import model.house.ExtendedHouse;
 import model.house.SimpleHouse;
 import service.factory.EmptyHouseMaker;
 import service.factory.ExtendedHouseMaker;
 import service.factory.SimpleHouseMaker;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
 public class FactoryTest
 {

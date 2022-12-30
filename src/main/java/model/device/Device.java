@@ -1,6 +1,5 @@
 package model.device;
 
-import model.Event;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -15,6 +14,9 @@ public abstract class Device implements BasicActions
     private NetworkSettings networkSettings;
     private final LocalDate guarantee;
     private final LocalDateTime timeFromStart;
+    protected final int room;
+    private int electricityConsuming;
+    private double deviceWear;
 
     public Device(String name,
                   String manufacturer,
@@ -22,7 +24,8 @@ public abstract class Device implements BasicActions
                   DeviceType type,
                   Battery battery,
                   NetworkSettings networkSettings,
-                  int guarantee)
+                  int guarantee,
+                  int room)
     {
         this.name = name;
         this.manufacturer = manufacturer;
@@ -33,6 +36,9 @@ public abstract class Device implements BasicActions
         this.guarantee = LocalDate.now().plusYears(guarantee);
         this.timeFromStart = LocalDateTime.from(LocalDateTime.now());
         this.enable = true;
+        this.room = room;
+        this.electricityConsuming = 0;
+        this.deviceWear = 0.1;
     }
 
     public void countElectricity() {}
@@ -78,12 +84,12 @@ public abstract class Device implements BasicActions
         this.networkSettings = networkSettings;
     }
 
-    public boolean getStatus()
+    public boolean isEnable()
     {
         return enable;
     }
 
-    public void setStatus(boolean status)
+    public void setEnable(boolean status)
     {
         this.enable = status;
     }
@@ -93,13 +99,28 @@ public abstract class Device implements BasicActions
         return LocalDateTime.from(timeFromStart);
     }
 
-    public Event createEvent()
-    {
-        return new Event();
-    }
-
     public LocalDateTime calculateRemainingTime()
     {
         return LocalDateTime.now();
+    }
+
+    public int getElectricityConsuming()
+    {
+        return electricityConsuming;
+    }
+
+    public void increaseElectricityConsuming(int electricityConsuming)
+    {
+        this.electricityConsuming += electricityConsuming;
+    }
+
+    public double getDeviceWear()
+    {
+        return deviceWear;
+    }
+
+    public void increaseDeviceWear(double deviceWear)
+    {
+        this.deviceWear -= deviceWear;
     }
 }

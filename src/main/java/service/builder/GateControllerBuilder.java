@@ -12,6 +12,7 @@ public class GateControllerBuilder implements DeviceBuilder
     private Battery battery;
     private NetworkSettings networkSettings;
     private int guarantee;
+    private int room;
 
     @Override
     public void setBattery(Battery battery)
@@ -49,8 +50,14 @@ public class GateControllerBuilder implements DeviceBuilder
         this.guarantee = guarantee;
     }
 
+    @Override
+    public void setRoom(int room)
+    {
+        this.room = room;
+    }
+
     public GateController getResult()
     {
-        return new GateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee);
+        return new GateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

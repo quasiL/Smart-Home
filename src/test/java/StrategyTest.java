@@ -1,10 +1,11 @@
+import model.device.Battery;
+import model.device.GateController;
+import model.device.NetworkSettings;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import model.device.Battery;
-import model.device.GateController;
-import model.device.NetworkSettings;
 
 public class StrategyTest
 {
@@ -19,7 +20,8 @@ public class StrategyTest
                 "0.0",
                 new Battery(),
                 new NetworkSettings(),
-                0);
+                0,
+                1);
     }
 
     @Test

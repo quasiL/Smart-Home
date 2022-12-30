@@ -16,4 +16,6 @@ public interface DeviceBuilder
     void setFirmwareVersion(String firmwareVersion);
 
     void setGuarantee(int guarantee);
+
+    void setRoom(int room);
 }

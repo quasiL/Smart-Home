@@ -1,5 +1,6 @@
 package service.factory;
 
+import model.EventType;
 import model.Room;
 import model.device.ClimateController;
 import model.device.GateController;
@@ -30,19 +31,33 @@ public class EmptyHouseMaker extends HouseMaker
         for (int i=0; i<house.getNumberOfFloors(); i++) {
             for (int j=0; j<house.getNumberOfRoomsPerFloor(); j++) {
 
-                Room room = new Room(false);
+                Room room = new Room();
 
-                director.buildClimateController(gateControllerBuilder);
-                GateController gateController = gateControllerBuilder.getResult();
-                room.addDevice(gateController);
+                if (i+j == 0) {
+                    director.buildClimateController(climateControllerBuilder, 0);
+                    ClimateController climateController = climateControllerBuilder.getResult();
+                    room.addDevice(climateController);
+                    house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, climateController);
+                    house.eventManager.subscribe(EventType.WARM, climateController);
+                    house.eventManager.subscribe(EventType.COLD, climateController);
+                    house.eventManager.subscribe(EventType.FLOOD, climateController);
+                }
+                if (i+j == 1) {
+                    director.buildGateController(gateControllerBuilder, 0);
+                    GateController gateController = gateControllerBuilder.getResult();
+                    room.addDevice(gateController);
+                    house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, gateController);
+                    house.eventManager.subscribe(EventType.EVENING, gateController);
+                    house.eventManager.subscribe(EventType.MORNING, gateController);
+                    house.eventManager.subscribe(EventType.FLOOD, gateController);
+                }
 
-                director.buildLightController(lightControllerBuilder);
+                director.buildLightController(lightControllerBuilder, i+j);
                 LightController lightController = lightControllerBuilder.getResult();
                 room.addDevice(lightController);
-
-                director.buildClimateController(climateControllerBuilder);
-                ClimateController climateController = climateControllerBuilder.getResult();
-                room.addDevice(climateController);
+                house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, lightController);
+                house.eventManager.subscribe(EventType.MORNING, lightController);
+                house.eventManager.subscribe(EventType.FLOOD, lightController);
 
                 house.addRoom(room);
             }

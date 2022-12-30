@@ -1,6 +1,7 @@
 package model.resident;
 
 import model.Event;
+import model.EventType;
 
 public abstract class Resident
 {
@@ -25,6 +26,6 @@ public abstract class Resident
 
     public Event createEvent()
     {
-        return new Event();
+        return new Event(EventType.COLD, 2);
     }
 }

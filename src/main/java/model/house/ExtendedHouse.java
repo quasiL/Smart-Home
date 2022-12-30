@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ExtendedHouse extends House
 {
-    private final Room garage = new Room(false);
+    private final Room garage = new Room();
 
     public ExtendedHouse()
     {

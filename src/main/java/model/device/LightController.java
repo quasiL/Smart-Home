@@ -1,14 +1,46 @@
 package model.device;
 
-public class LightController extends Device
+import model.Event;
+import service.observer.EventListener;
+
+public class LightController extends Device implements EventListener
 {
+    private boolean lightInTheRoom;
+
     public LightController(String name,
                            String manufacturer,
                            String firmwareVersion,
                            Battery battery,
                            NetworkSettings networkSettings,
-                           int guarantee)
+                           int guarantee,
+                           int room)
     {
-        super(name, manufacturer, firmwareVersion, DeviceType.LIGHT_CONTROLLER, battery, networkSettings, guarantee);
+        super(name, manufacturer, firmwareVersion, DeviceType.LIGHT_CONTROLLER, battery, networkSettings,
+                guarantee, room);
+        lightInTheRoom = false;
+    }
+
+    @Override
+    public void update(Event event)
+    {
+        switch (event.getEventType()) {
+            case HOUR_HAS_PASSED -> {
+                if (isEnable()) {
+                    increaseDeviceWear(0.02);
+                    increaseElectricityConsuming(300);
+                }
+            }
+            case MORNING -> setLightInTheRoom(false);
+            case FLOOD -> setEnable(false);
+        }
+    }
+
+    public void setLightInTheRoom(boolean newState)
+    {
+        if (lightInTheRoom != newState) {
+            lightInTheRoom = newState;
+            increaseDeviceWear(0.01);
+            increaseElectricityConsuming(5);
+        }
     }
 }

@@ -12,6 +12,7 @@ public class ClimateControllerBuilder implements DeviceBuilder
     private Battery battery;
     private NetworkSettings networkSettings;
     private int guarantee;
+    private int room;
 
     @Override
     public void setBattery(Battery battery)
@@ -49,8 +50,14 @@ public class ClimateControllerBuilder implements DeviceBuilder
         this.guarantee = guarantee;
     }
 
+    @Override
+    public void setRoom(int room)
+    {
+        this.room = room;
+    }
+
     public ClimateController getResult()
     {
-        return new ClimateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee);
+        return new ClimateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

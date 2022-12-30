@@ -3,10 +3,14 @@ package model.house;
 import model.Event;
 import model.EventType;
 import model.Room;
+import model.device.Device;
 import service.observer.EventManager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class House implements HouseConfiguration
 {
@@ -60,5 +64,15 @@ public abstract class House implements HouseConfiguration
     {
         Event event = new Event(type);
         eventManager.notify(event);
+    }
+
+    public List<Device> getAllDevices()
+    {
+        List<Device> newList;
+        newList = getRooms().stream()
+                .map(Room::getDevices)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+        return newList;
     }
 }

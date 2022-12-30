@@ -2,6 +2,7 @@ package model.device;
 
 import model.Event;
 import service.observer.EventListener;
+import service.visitor.Visitor;
 
 public class ClimateController extends Device implements EventListener
 {
@@ -27,18 +28,18 @@ public class ClimateController extends Device implements EventListener
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
                     increaseDeviceWear(0.05);
-                    increaseElectricityConsuming(1000);
+                    increaseElectricityConsumption(1000);
                 }
             }
             case WARM -> {
                 setTemperature(-2);
                 increaseDeviceWear(0.02);
-                increaseElectricityConsuming(15);
+                increaseElectricityConsumption(15);
             }
             case COLD -> {
                 setTemperature(2);
                 increaseDeviceWear(0.02);
-                increaseElectricityConsuming(15);
+                increaseElectricityConsumption(15);
             }
             case FLOOD -> setEnable(false);
         }
@@ -52,7 +53,13 @@ public class ClimateController extends Device implements EventListener
     public void setTemperature(int temperature)
     {
         this.temperature += temperature;
-        increaseElectricityConsuming(10 * temperature);
+        increaseElectricityConsumption(10 * temperature);
         increaseDeviceWear(0.01);
+    }
+
+    @Override
+    public String[] accept(Visitor visitor)
+    {
+        return visitor.visitClimateController(this);
     }
 }

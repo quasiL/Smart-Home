@@ -2,6 +2,7 @@ package model.device;
 
 import model.Event;
 import service.observer.EventListener;
+import service.visitor.Visitor;
 
 public class LightController extends Device implements EventListener
 {
@@ -27,7 +28,7 @@ public class LightController extends Device implements EventListener
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
                     increaseDeviceWear(0.02);
-                    increaseElectricityConsuming(300);
+                    increaseElectricityConsumption(300);
                 }
             }
             case MORNING -> setLightInTheRoom(false);
@@ -40,7 +41,12 @@ public class LightController extends Device implements EventListener
         if (lightInTheRoom != newState) {
             lightInTheRoom = newState;
             increaseDeviceWear(0.01);
-            increaseElectricityConsuming(5);
+            increaseElectricityConsumption(5);
         }
+    }
+
+    public String[] accept(Visitor visitor)
+    {
+        return visitor.visitLightController(this);
     }
 }

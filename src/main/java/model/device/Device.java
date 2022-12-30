@@ -1,7 +1,13 @@
 package model.device;
 
+import service.visitor.Visitor;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public abstract class Device implements BasicActions
 {
@@ -15,7 +21,7 @@ public abstract class Device implements BasicActions
     private final LocalDate guarantee;
     private final LocalDateTime timeFromStart;
     protected final int room;
-    private int electricityConsuming;
+    private int electricityConsumption;
     private double deviceWear;
 
     public Device(String name,
@@ -37,12 +43,32 @@ public abstract class Device implements BasicActions
         this.timeFromStart = LocalDateTime.from(LocalDateTime.now());
         this.enable = true;
         this.room = room;
-        this.electricityConsuming = 0;
+        this.electricityConsumption = 0;
         this.deviceWear = 0.1;
     }
 
     public void countElectricity() {}
-    public void createReports() {}
+    public void createReports(String fileName)
+    {
+        try {
+            File file = new File("reports/" + fileName);
+            file.createNewFile();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write("Name: " + name);
+            writer.newLine();
+            writer.write("Electricity consumption: " + electricityConsumption + " watts");
+            writer.newLine();
+            writer.write("Device wear: " + deviceWear * 100 + " %");
+            writer.newLine();
+            writer.write("Is on: " + isEnable());
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error exporting statistics: " + e.getMessage());
+        }
+    }
+    public String[] accept(Visitor visitor) {return null;}
     public void restart()
     {
         //add something to the log
@@ -104,14 +130,19 @@ public abstract class Device implements BasicActions
         return LocalDateTime.now();
     }
 
-    public int getElectricityConsuming()
+    public int getRoom()
     {
-        return electricityConsuming;
+        return room;
     }
 
-    public void increaseElectricityConsuming(int electricityConsuming)
+    public int getElectricityConsumption()
     {
-        this.electricityConsuming += electricityConsuming;
+        return electricityConsumption;
+    }
+
+    public void increaseElectricityConsumption(int electricityConsumption)
+    {
+        this.electricityConsumption += electricityConsumption;
     }
 
     public double getDeviceWear()

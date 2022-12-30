@@ -7,6 +7,7 @@ import service.observer.EventListener;
 import service.strategy.Evening;
 import service.strategy.Morning;
 import service.strategy.Strategy;
+import service.visitor.Visitor;
 
 public class GateController extends Device implements EventListener
 {
@@ -56,20 +57,25 @@ public class GateController extends Device implements EventListener
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
                     increaseDeviceWear(0.05);
-                    increaseElectricityConsuming(700);
+                    increaseElectricityConsumption(700);
                 }
             }
             case EVENING -> {
                 setStrategy(evening);
                 increaseDeviceWear(0.02);
-                increaseElectricityConsuming(20);
+                increaseElectricityConsumption(20);
             }
             case MORNING -> {
                 setStrategy(morning);
                 increaseDeviceWear(0.02);
-                increaseElectricityConsuming(20);
+                increaseElectricityConsumption(20);
             }
             case FLOOD -> setEnable(false);
         }
+    }
+
+    public String[] accept(Visitor visitor)
+    {
+        return visitor.visitGateController(this);
     }
 }

@@ -2,10 +2,13 @@ import model.device.Battery;
 import model.device.GateController;
 import model.device.NetworkSettings;
 
+import model.house.House;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import service.factory.ExtendedHouseMaker;
+import service.factory.HouseMaker;
 
 public class StrategyTest
 {

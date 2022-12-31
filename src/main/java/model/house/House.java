@@ -1,5 +1,6 @@
 package model.house;
 
+import config.Config;
 import model.Event;
 import model.EventType;
 import model.Room;
@@ -10,28 +11,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public abstract class House implements HouseConfiguration
 {
-    private final List<String> deviceTypes;
     private final List<Room> rooms;
-    private final int numberOfFloors;
-    private final int numberOfRoomsPerFloor;
     public EventManager eventManager;
+    private final Config config;
 
-    public House(List<String> deviceTypes, int numberOfFloors, int numberOfRoomsPerFloor)
+    public House()
     {
-        this.deviceTypes = deviceTypes;
         this.rooms = new ArrayList<>();
-        this.numberOfFloors = numberOfFloors;
-        this.numberOfRoomsPerFloor = numberOfRoomsPerFloor;
+        config = new Config("default");
         eventManager = new EventManager(EventType.values());
-    }
-
-    public List<String> getDeviceTypes()
-    {
-        return deviceTypes;
     }
 
     public List<Room> getRooms()
@@ -46,12 +37,12 @@ public abstract class House implements HouseConfiguration
 
     public int getNumberOfFloors()
     {
-        return numberOfFloors;
+        return config.getFloors();
     }
 
     public int getNumberOfRoomsPerFloor()
     {
-        return numberOfRoomsPerFloor;
+        return config.getRooms();
     }
 
     public void generateEvent(EventType type, int room)

@@ -6,6 +6,9 @@ import service.visitor.Visitor;
 
 public class LightController extends Device implements EventListener
 {
+    /**
+     * The state of the light in the room
+     */
     private boolean lightInTheRoom;
 
     public LightController(String name,
@@ -36,6 +39,10 @@ public class LightController extends Device implements EventListener
         }
     }
 
+    /**
+     * On/off the light
+     * @param newState on/off
+     */
     public void setLightInTheRoom(boolean newState)
     {
         if (lightInTheRoom != newState) {

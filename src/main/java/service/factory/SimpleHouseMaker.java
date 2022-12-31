@@ -2,16 +2,12 @@ package service.factory;
 
 import model.EventType;
 import model.Room;
-import model.device.ClimateController;
-import model.device.GateController;
-import model.device.LightController;
+import model.device.*;
 import model.house.SimpleHouse;
 import model.resident.Animal;
 import model.resident.Person;
 import model.resident.Resident;
-import service.builder.ClimateControllerBuilder;
-import service.builder.GateControllerBuilder;
-import service.builder.LightControllerBuilder;
+import service.builder.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +19,11 @@ public class SimpleHouseMaker extends HouseMaker
     private final GateControllerBuilder gateControllerBuilder;
     private final LightControllerBuilder lightControllerBuilder;
     private final ClimateControllerBuilder climateControllerBuilder;
+    private final SignalingBuilder signalingBuilder;
+    private final WaterControllerBuilder waterControllerBuilder;
+    private final SmokeDetectorBuilder smokeDetectorBuilder;
+    private final TemperatureSensorBuilder temperatureSensorBuilder;
+    private final SoundSystemBuilder soundSystemBuilder;
 
     public SimpleHouseMaker()
     {
@@ -30,6 +31,11 @@ public class SimpleHouseMaker extends HouseMaker
         this.gateControllerBuilder = new GateControllerBuilder();
         this.lightControllerBuilder = new LightControllerBuilder();
         this.climateControllerBuilder = new ClimateControllerBuilder();
+        this.signalingBuilder = new SignalingBuilder();
+        this.waterControllerBuilder = new WaterControllerBuilder();
+        this.smokeDetectorBuilder = new SmokeDetectorBuilder();
+        this.temperatureSensorBuilder = new TemperatureSensorBuilder();
+        this.soundSystemBuilder = new SoundSystemBuilder();
 
         residents = new ArrayList<>();
         residents.add(new Person("John", 45));
@@ -66,7 +72,7 @@ public class SimpleHouseMaker extends HouseMaker
                     house.eventManager.subscribe(EventType.FLOOD, climateController);
                 }
                 if (i+j == 1) {
-                    director.buildGateController(gateControllerBuilder, 0);
+                    director.buildGateController(gateControllerBuilder, 1);
                     GateController gateController = gateControllerBuilder.getResult();
                     room.addDevice(gateController);
                     house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, gateController);
@@ -75,12 +81,56 @@ public class SimpleHouseMaker extends HouseMaker
                     house.eventManager.subscribe(EventType.FLOOD, gateController);
                 }
 
+                if (i+j == 2) {
+                    director.buildSoundSystem(soundSystemBuilder, 2);
+                    SoundSystem soundSystem = soundSystemBuilder.getResult();
+                    room.addDevice(soundSystem);
+                    house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, soundSystem);
+                    house.eventManager.subscribe(EventType.SOUND_ON, soundSystem);
+                    house.eventManager.subscribe(EventType.SOUND_PAUSE, soundSystem);
+                    house.eventManager.subscribe(EventType.SOUND_RESUME, soundSystem);
+                    house.eventManager.subscribe(EventType.SOUND_NEXT_TRACK, soundSystem);
+                    house.eventManager.subscribe(EventType.SOUND_OFF, soundSystem);
+                    house.eventManager.subscribe(EventType.FLOOD, soundSystem);
+                }
+
+                if (i+j == 3) {
+                    director.buildSignaling(signalingBuilder, 3);
+                    Signaling signaling = signalingBuilder.getResult();
+                    room.addDevice(signaling);
+                    house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, signaling);
+                    house.eventManager.subscribe(EventType.FIRE, signaling);
+                    house.eventManager.subscribe(EventType.FLOOD, signaling);
+                }
+
                 director.buildLightController(lightControllerBuilder, i+j);
                 LightController lightController = lightControllerBuilder.getResult();
                 room.addDevice(lightController);
                 house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, lightController);
                 house.eventManager.subscribe(EventType.MORNING, lightController);
                 house.eventManager.subscribe(EventType.FLOOD, lightController);
+
+                director.buildWaterController(waterControllerBuilder, i+j);
+                WaterController waterController = waterControllerBuilder.getResult();
+                room.addDevice(waterController);
+                house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, waterController);
+                house.eventManager.subscribe(EventType.FLOOD, waterController);
+                house.eventManager.subscribe(EventType.WATER_ON, waterController);
+
+                director.buildSmokeDetector(smokeDetectorBuilder, i+j);
+                SmokeDetector smokeDetector = smokeDetectorBuilder.getResult();
+                room.addDevice(smokeDetector);
+                house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, smokeDetector);
+                house.eventManager.subscribe(EventType.FIRE, smokeDetector);
+                house.eventManager.subscribe(EventType.FLOOD, smokeDetector);
+
+                director.buildTemperatureSensor(temperatureSensorBuilder, i+j);
+                TemperatureSensor temperatureSensor = temperatureSensorBuilder.getResult();
+                room.addDevice(temperatureSensor);
+                house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, temperatureSensor);
+                house.eventManager.subscribe(EventType.WARM, temperatureSensor);
+                house.eventManager.subscribe(EventType.COLD, temperatureSensor);
+                house.eventManager.subscribe(EventType.FLOOD, temperatureSensor);
 
                 house.addRoom(room);
             }

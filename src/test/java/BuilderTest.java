@@ -27,7 +27,7 @@ public class BuilderTest
                 1);
     }
 
-    // TODO Write parametrized test222 for all types of devices instead of this
+    // TODO Write parametrized test for all types of devices instead of this
     @Test
     @Order(0)
     void checkIfClimateControllerHasRightAttributes_isAttributesRight_returnsClimateController()

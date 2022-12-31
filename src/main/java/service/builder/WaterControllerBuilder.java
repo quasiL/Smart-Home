@@ -1,10 +1,10 @@
 package service.builder;
 
 import model.device.Battery;
-import model.device.LightController;
 import model.device.NetworkSettings;
+import model.device.WaterController;
 
-public class LightControllerBuilder implements DeviceBuilder
+public class WaterControllerBuilder implements DeviceBuilder
 {
     private String name;
     private String manufacturer;
@@ -56,8 +56,8 @@ public class LightControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
-    public LightController getResult()
+    public WaterController getResult()
     {
-        return new LightController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
+        return new WaterController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

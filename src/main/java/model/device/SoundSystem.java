@@ -1,10 +1,10 @@
 package model.device;
 
 import model.Event;
-import model.EventType;
 import service.observer.EventListener;
 import service.state.OffState;
 import service.state.State;
+import service.visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +36,55 @@ public class SoundSystem extends Device implements EventListener
     {
         super(name, manufacturer, firmwareVersion, DeviceType.SOUND_SYSTEM, battery, networkSettings, guarantee, room);
         this.state = new OffState(this);
-        this.musicTracks = new ArrayList<>();
+        this.musicTracks = new ArrayList<>(List.of("Track 1", "Track 2", "Track 3"));
     }
 
     @Override
     public void update(Event event)
     {
-        if (event.getEventType() == EventType.FLOOD) {
-            setEnable(false);
+        switch (event.getEventType()) {
+            case HOUR_HAS_PASSED -> {
+                if (isEnable()) {
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(225);
+                }
+            }
+            case SOUND_ON -> {
+                if (isEnable()) {
+                    turnOn();
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(420);
+                }
+            }
+            case SOUND_PAUSE -> {
+                if (isEnable()) {
+                    pause();
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(5);
+                }
+            }
+            case SOUND_RESUME -> {
+                if (isEnable()) {
+                    resume();
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(5);
+                }
+            }
+            case SOUND_NEXT_TRACK -> {
+                if (isEnable()) {
+                    nextTrack();
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(50);
+                }
+            }
+            case SOUND_OFF -> {
+                if (isEnable()) {
+                    turnOff();
+                    increaseDeviceWear(0.01);
+                    increaseElectricityConsumption(10);
+                }
+            }
+            case FLOOD -> setEnable(false);
         }
     }
 
@@ -174,5 +215,11 @@ public class SoundSystem extends Device implements EventListener
     public void addMusicTrack(String track)
     {
         this.musicTracks.add(track);
+    }
+
+    @Override
+    public String[] accept(Visitor visitor)
+    {
+        return visitor.visitSoundSystem(this);
     }
 }

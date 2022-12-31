@@ -1,9 +1,6 @@
 package service.visitor;
 
-import model.device.ClimateController;
-import model.device.Device;
-import model.device.GateController;
-import model.device.LightController;
+import model.device.*;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -115,6 +112,56 @@ public class PDFExportElectricityConsumption implements Visitor
                 lightController.getName(),
                 Integer.toString(lightController.getRoom()),
                 Integer.toString(lightController.getElectricityConsumption())
+        };
+    }
+
+    @Override
+    public String[] visitWaterController(WaterController waterController)
+    {
+        return new String[]{
+                waterController.getName(),
+                Integer.toString(waterController.getRoom()),
+                Integer.toString(waterController.getElectricityConsumption())
+        };
+    }
+
+    @Override
+    public String[] visitSoundSystem(SoundSystem soundSystem)
+    {
+        return new String[]{
+                soundSystem.getName(),
+                Integer.toString(soundSystem.getRoom()),
+                Integer.toString(soundSystem.getElectricityConsumption())
+        };
+    }
+
+    @Override
+    public String[] visitSignaling(Signaling signaling)
+    {
+        return new String[]{
+                signaling.getName(),
+                Integer.toString(signaling.getRoom()),
+                Integer.toString(signaling.getElectricityConsumption())
+        };
+    }
+
+    @Override
+    public String[] visitSmokeDetector(SmokeDetector smokeDetector)
+    {
+        return new String[]{
+                smokeDetector.getName(),
+                Integer.toString(smokeDetector.getRoom()),
+                Integer.toString(smokeDetector.getElectricityConsumption())
+        };
+    }
+
+    @Override
+    public String[] visitTemperatureSensor(TemperatureSensor temperatureSensor)
+    {
+        return new String[]{
+                temperatureSensor.getName(),
+                Integer.toString(temperatureSensor.getRoom()),
+                Integer.toString(temperatureSensor.getElectricityConsumption())
         };
     }
 }

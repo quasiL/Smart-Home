@@ -11,10 +11,29 @@ import service.visitor.Visitor;
 
 public class GateController extends Device implements EventListener
 {
+    /**
+     * Window in the room
+     */
     private final Window window;
+
+    /**
+     * Door in the room
+     */
     private final Door door;
+
+    /**
+     * Actual strategy
+     */
     private Strategy strategy;
+
+    /**
+     * Evening strategy
+     */
     private final Evening evening;
+
+    /**
+     * Morning strategy
+     */
     private final Morning morning;
 
     public GateController(String name,
@@ -34,6 +53,10 @@ public class GateController extends Device implements EventListener
         this.strategy = morning;
     }
 
+    /**
+     * Method for changing actual strategy
+     * @param strategy new strategy
+     */
     private void setStrategy(Strategy strategy)
     {
         this.strategy = strategy;
@@ -74,6 +97,7 @@ public class GateController extends Device implements EventListener
         }
     }
 
+    @Override
     public String[] accept(Visitor visitor)
     {
         return visitor.visitGateController(this);

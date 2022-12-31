@@ -2,8 +2,9 @@ package model.resident;
 
 import model.Event;
 import model.EventType;
+import service.observer.EventListener;
 
-public abstract class Resident
+public abstract class Resident implements EventListener
 {
     private final String name;
     private final int age;
@@ -28,4 +29,6 @@ public abstract class Resident
     {
         return new Event(EventType.COLD, 2);
     }
+
+    public void update(Event event) {}
 }

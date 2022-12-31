@@ -4,6 +4,11 @@ import model.Event;
 import service.observer.EventListener;
 import service.visitor.Visitor;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class LightController extends Device implements EventListener
 {
     /**

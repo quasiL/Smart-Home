@@ -20,11 +20,13 @@ public class Main
         //h.generateEvent(EventType.FLOOD, 0);
         //System.out.println(h.getRooms().get(0).getDevices().get(0).isEnable());
 
-        //h.getRooms().get(0).getDevices().get(0).createReports("fgdfgdfgd");
+
         h.generateEvent(EventType.HOUR_HAS_PASSED);
         h.generateEvent(EventType.HOUR_HAS_PASSED);
         h.generateEvent(EventType.HOUR_HAS_PASSED);
-        PDFExportElectricityConsumption report = new PDFExportElectricityConsumption();
-        report.export(h.getAllDevices());
+        //PDFExportElectricityConsumption report = new PDFExportElectricityConsumption();
+        //report.export(h.getAllDevices());
+
+        h.getRooms().get(0).getDevices().get(0).createReports("444");
     }
 }

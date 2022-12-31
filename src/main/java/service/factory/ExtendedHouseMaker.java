@@ -7,6 +7,7 @@ import model.house.ExtendedHouse;
 import model.resident.Animal;
 import model.resident.Person;
 import model.resident.Resident;
+import model.resident.TypeOfAction;
 import service.builder.*;
 
 import java.util.ArrayList;
@@ -38,12 +39,12 @@ public class ExtendedHouseMaker extends HouseMaker
         this.soundSystemBuilder = new SoundSystemBuilder();
 
         residents = new ArrayList<>();
-        residents.add(new Person("John", 45));
-        residents.add(new Person("Mary", 42));
-        residents.add(new Person("Rachel", 18));
-        residents.add(new Person("Sophia", 12));
-        residents.add(new Person("Michael", 5));
-        residents.add(new Person("David", 1));
+        residents.add(new Person("John", 45, TypeOfAction.SPORT));
+        residents.add(new Person("Mary", 42, TypeOfAction.SPORT));
+        residents.add(new Person("Rachel", 18, TypeOfAction.REST));
+        residents.add(new Person("Sophia", 12, TypeOfAction.REST));
+        residents.add(new Person("Michael", 5, TypeOfAction.REST));
+        residents.add(new Person("David", 1, TypeOfAction.REST));
         residents.add(new Animal("Bella", 3, "Dog"));
         residents.add(new Animal("Charlie", 8, "Cat"));
         residents.add(new Animal("Luna", 3, "Hamster"));
@@ -52,6 +53,10 @@ public class ExtendedHouseMaker extends HouseMaker
     @Override
     public ExtendedHouse createHouse()
     {
+        for (Resident resident : residents) {
+            house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, resident);
+        }
+
         for (int i=0; i<house.getNumberOfFloors(); i++) {
             for (int j=0; j<house.getNumberOfRoomsPerFloor(); j++) {
 

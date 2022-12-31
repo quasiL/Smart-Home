@@ -79,7 +79,7 @@ public class GateController extends Device implements EventListener
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
-                    increaseDeviceWear(0.05);
+                    increaseDeviceWear(0.005);
                     increaseElectricityConsumption(700);
                 }
             }

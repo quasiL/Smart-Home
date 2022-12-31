@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public abstract class Device implements BasicActions
 {
-    private final String name;
-    private final String manufacturer;
-    private final String firmwareVersion;
+    protected final String name;
+    protected final String manufacturer;
+    protected final String firmwareVersion;
     private final DeviceType type;
     private boolean enable;
     private final Battery battery;
@@ -21,8 +21,8 @@ public abstract class Device implements BasicActions
     private final LocalDate guarantee;
     private final LocalDateTime timeFromStart;
     protected final int room;
-    private int electricityConsumption;
-    private double deviceWear;
+    protected int electricityConsumption;
+    protected double deviceWear;
 
     public Device(String name,
                   String manufacturer,
@@ -44,10 +44,9 @@ public abstract class Device implements BasicActions
         this.enable = true;
         this.room = room;
         this.electricityConsumption = 0;
-        this.deviceWear = 0.1;
+        this.deviceWear = 0.0;
     }
 
-    public void countElectricity() {}
     public void createReports(String fileName)
     {
         try {
@@ -55,7 +54,9 @@ public abstract class Device implements BasicActions
             file.createNewFile();
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write("Name: " + name);
+            writer.write("Name: " + name + " " + manufacturer);
+            writer.newLine();
+            writer.write("Firmware Version: " + firmwareVersion);
             writer.newLine();
             writer.write("Electricity consumption: " + electricityConsumption + " watts");
             writer.newLine();
@@ -68,12 +69,18 @@ public abstract class Device implements BasicActions
             System.out.println("Error exporting statistics: " + e.getMessage());
         }
     }
-    public String[] accept(Visitor visitor) {return null;}
+
+    public String[] accept(Visitor visitor)
+    {
+        return null;
+    }
+
     public void restart()
     {
         //add something to the log
         enable = true;
     }
+
     public void synchronizeTime() {}
 
     public LocalDate getGuarantee()
@@ -152,6 +159,6 @@ public abstract class Device implements BasicActions
 
     public void increaseDeviceWear(double deviceWear)
     {
-        this.deviceWear -= deviceWear;
+        this.deviceWear += deviceWear;
     }
 }

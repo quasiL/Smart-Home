@@ -14,5 +14,7 @@ public enum EventType
     SOUND_PAUSE,
     SOUND_RESUME,
     SOUND_NEXT_TRACK,
-    SOUND_OFF
+    SOUND_OFF,
+    ANIMAL_HUNGRY,
+    CHANGE_ACTION
 }

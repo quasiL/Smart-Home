@@ -1,0 +1,31 @@
+{
+  "default": {
+    "floors": 0,
+    "rooms": 0
+  },
+  "empty_house": {
+    "floors": 1,
+    "rooms": 2
+  },
+  "simple_house": {
+    "floors": 2,
+    "rooms": 3
+  },
+  "extended_house": {
+    "floors": 3,
+    "rooms": 5
+  },
+  "temperature": {
+    "temperature": 18
+  },
+  "tracks": {
+    "tracks": [
+      "Van Halen - 1984",
+      "Depeche Mode - Policy Of Truth",
+      "King Crimson - Moonchild",
+      "The Clash - London Calling",
+      "New Order - Fine Time",
+      "David Bowie - Heroes"
+    ]
+  }
+}

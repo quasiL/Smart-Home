@@ -1,5 +1,6 @@
 package model.device;
 
+import config.Config;
 import model.Event;
 import service.observer.EventListener;
 import service.state.OffState;
@@ -36,7 +37,8 @@ public class SoundSystem extends Device implements EventListener
     {
         super(name, manufacturer, firmwareVersion, DeviceType.SOUND_SYSTEM, battery, networkSettings, guarantee, room);
         this.state = new OffState(this);
-        this.musicTracks = new ArrayList<>(List.of("Track 1", "Track 2", "Track 3"));
+        Config config = new Config("tracks");
+        this.musicTracks = config.getTracks();
     }
 
     @Override

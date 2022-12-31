@@ -1,5 +1,6 @@
 package model.device;
 
+import config.Config;
 import model.Event;
 import service.observer.EventListener;
 import service.visitor.Visitor;
@@ -21,7 +22,8 @@ public class ClimateController extends Device implements EventListener
     {
         super(name, manufacturer, firmwareVersion, DeviceType.CLIMATE_CONTROLLER, battery, networkSettings,
                 guarantee, room);
-        this.temperature = 18;
+        Config config = new Config("temperature");
+        this.temperature = config.getTemperature();
     }
 
     @Override

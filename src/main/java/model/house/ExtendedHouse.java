@@ -1,23 +1,25 @@
 package model.house;
 
-import model.Room;
-import java.util.List;
+import config.Config;
 
 public class ExtendedHouse extends House
 {
-    private final Room garage = new Room();
+    private final Config config;
 
     public ExtendedHouse()
     {
-        super(List.of("GatesController",
-                        "LightController",
-                        "Signaling",
-                        "ClimateController",
-                        "SoundSystem",
-                        "WaterCounter",
-                        "HomeAssistant",
-                        "CarDiagnostic"),
-                3,
-                5);
+        config = new Config("extended_house");
+    }
+
+    @Override
+    public int getNumberOfFloors()
+    {
+        return config.getFloors();
+    }
+
+    @Override
+    public int getNumberOfRoomsPerFloor()
+    {
+        return config.getRooms();
     }
 }

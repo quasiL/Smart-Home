@@ -1,10 +1,10 @@
 package service.builder;
 
 import model.device.Battery;
-import model.device.LightController;
 import model.device.NetworkSettings;
+import model.device.Signaling;
 
-public class LightControllerBuilder implements DeviceBuilder
+public class SignalingBuilder implements DeviceBuilder
 {
     private String name;
     private String manufacturer;
@@ -56,8 +56,8 @@ public class LightControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
-    public LightController getResult()
+    public Signaling getResult()
     {
-        return new LightController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
+        return new Signaling(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

@@ -6,6 +6,9 @@ import service.visitor.Visitor;
 
 public class ClimateController extends Device implements EventListener
 {
+    /**
+     * Actual temperature in the house
+     */
     private int temperature;
 
     public ClimateController(String name,
@@ -45,11 +48,19 @@ public class ClimateController extends Device implements EventListener
         }
     }
 
+    /**
+     * Get actual temperature in the house
+     * @return temperature
+     */
     public int getTemperature()
     {
         return temperature;
     }
 
+    /**
+     * Method for increasing/decreasing temperature in the house
+     * @param temperature temperature change
+     */
     public void setTemperature(int temperature)
     {
         this.temperature += temperature;

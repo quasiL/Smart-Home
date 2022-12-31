@@ -8,5 +8,11 @@ public enum EventType
     WARM,
     COLD,
     FIRE,
-    FLOOD
+    FLOOD,
+    WATER_ON,
+    SOUND_ON,
+    SOUND_PAUSE,
+    SOUND_RESUME,
+    SOUND_NEXT_TRACK,
+    SOUND_OFF
 }

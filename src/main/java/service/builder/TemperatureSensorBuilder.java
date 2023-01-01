@@ -57,6 +57,10 @@ public class TemperatureSensorBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of TemperatureSensor
+     * @return new TemperatureSensor
+     */
     public TemperatureSensor getResult()
     {
         HouseLogger.log("New " + name + " was created by TemperatureSensorBuilder");

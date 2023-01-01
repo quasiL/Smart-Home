@@ -57,6 +57,10 @@ public class GateControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of GateController
+     * @return new GateController
+     */
     public GateController getResult()
     {
         HouseLogger.log("New " + name + " was created by GateControllerBuilder");

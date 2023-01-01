@@ -57,6 +57,10 @@ public class LightControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of LightController
+     * @return new LightController
+     */
     public LightController getResult()
     {
         HouseLogger.log("New " + name + " was created by LightControllerBuilder");

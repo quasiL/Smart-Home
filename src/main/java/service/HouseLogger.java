@@ -9,7 +9,14 @@ import java.util.logging.Logger;
 
 public class HouseLogger
 {
+    /**
+     * Logger
+     */
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Logger.class.getName());
+
+    /**
+     * Log filename
+     */
     private static final String file = "logs/log_" +
             LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH_mm_ss")) + ".txt";
 

@@ -57,6 +57,10 @@ public class SignalingBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of Signaling
+     * @return new Signaling
+     */
     public Signaling getResult()
     {
         HouseLogger.log("New " + name + " was created by SignalingBuilder");

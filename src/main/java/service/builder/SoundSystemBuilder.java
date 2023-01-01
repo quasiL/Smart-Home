@@ -57,6 +57,10 @@ public class SoundSystemBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of SoundSystem
+     * @return new SoundSystem
+     */
     public SoundSystem getResult()
     {
         HouseLogger.log("New " + name + " was created by SoundSystemBuilder");

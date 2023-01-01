@@ -57,6 +57,10 @@ public class SmokeDetectorBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of SmokeDetector
+     * @return new SmokeDetector
+     */
     public SmokeDetector getResult()
     {
         HouseLogger.log("New " + name + " was created by SmokeDetectorBuilder");

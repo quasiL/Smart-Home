@@ -57,6 +57,10 @@ public class ClimateControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of ClimateController
+     * @return new ClimateController
+     */
     public ClimateController getResult()
     {
         HouseLogger.log("New " + name + " was created by ClimateControllerBuilder");

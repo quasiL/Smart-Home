@@ -11,6 +11,9 @@ import java.util.Map;
 
 public class EventManager
 {
+    /**
+     * HashMap listener - events
+     */
     Map<EventType, List<EventListener>> listeners = new HashMap<>();
 
     public EventManager(EventType... events)
@@ -21,18 +24,32 @@ public class EventManager
         }
     }
 
+    /**
+     * Method for adding listener to this type of event
+     * @param event event
+     * @param listener new listener
+     */
     public void subscribe(EventType event, EventListener listener)
     {
         List<EventListener> users = listeners.get(event);
         users.add(listener);
     }
 
+    /**
+     * Method for removing listener from this type of event
+     * @param event event
+     * @param listener listener
+     */
     public void unsubscribe(EventType event, EventListener listener)
     {
         List<EventListener> users = listeners.get(event);
         users.remove(listener);
     }
 
+    /**
+     * Method for notifying listeners about this type of event
+     * @param event current event
+     */
     public void notify(Event event)
     {
         HouseLogger.log("All relevant listeners have been notified of the event " + event.getEventType());

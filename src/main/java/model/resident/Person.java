@@ -16,6 +16,7 @@ public class Person extends Resident
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Person " + getName() + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case CHANGE_ACTION -> setAction();
             case ANIMAL_HUNGRY -> feedAnimal();

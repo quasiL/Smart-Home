@@ -25,8 +25,15 @@ public class Animal extends Resident
     public void update(Event event)
     {
         switch (event.getEventType()) {
-            case HOUR_HAS_PASSED -> hoursWithoutFood++;
-            case ANIMAL_HUNGRY -> getFood();
+            case HOUR_HAS_PASSED -> {
+                HouseLogger.log(getKindOfAnimal() + " " + getName() + " get event " + event.getEventType());
+                hoursWithoutFood++;
+            }
+            case ANIMAL_HUNGRY -> {
+                HouseLogger.log(getKindOfAnimal() + " " + getName() + " get event " + event.getEventType());
+                getFood();
+            }
+            case CHANGE_ACTION -> {}
         }
     }
 

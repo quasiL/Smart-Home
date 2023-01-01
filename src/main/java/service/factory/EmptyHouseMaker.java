@@ -38,6 +38,8 @@ public class EmptyHouseMaker extends HouseMaker
     {
         for (Resident resident : residents) {
             house.eventManager.subscribe(EventType.HOUR_HAS_PASSED, resident);
+            house.eventManager.subscribe(EventType.ANIMAL_HUNGRY, resident);
+            house.eventManager.subscribe(EventType.CHANGE_ACTION, resident);
         }
 
         for (int i=0; i<house.getNumberOfFloors(); i++) {

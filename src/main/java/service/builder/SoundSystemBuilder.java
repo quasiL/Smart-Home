@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.NetworkSettings;
 import model.device.SoundSystem;
+import service.HouseLogger;
 
 public class SoundSystemBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class SoundSystemBuilder implements DeviceBuilder
 
     public SoundSystem getResult()
     {
+        HouseLogger.log("New " + name + " was created by SoundSystemBuilder");
         return new SoundSystem(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

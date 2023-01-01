@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.NetworkSettings;
 import model.device.WaterController;
+import service.HouseLogger;
 
 public class WaterControllerBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class WaterControllerBuilder implements DeviceBuilder
 
     public WaterController getResult()
     {
+        HouseLogger.log("New " + name + " was created by WaterControllerBuilder");
         return new WaterController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

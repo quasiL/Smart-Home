@@ -22,6 +22,7 @@ public class TemperatureSensor extends Device implements EventListener
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {

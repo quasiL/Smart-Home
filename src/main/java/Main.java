@@ -19,6 +19,7 @@ public class Main
         HouseMaker hm = new ExtendedHouseMaker();
         House h = hm.createHouse();
         System.out.println(h.getRooms().get(0).getDevices().get(0).isEnable());
+        System.out.println(h.getClass().getSimpleName());
 //        //h.generateEvent(EventType.FLOOD, 0);
 //        //System.out.println(h.getRooms().get(0).getDevices().get(0).isEnable());
 //

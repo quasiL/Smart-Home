@@ -3,6 +3,7 @@ package model.device;
 import model.Event;
 import model.gate.Door;
 import model.gate.Window;
+import service.HouseLogger;
 import service.observer.EventListener;
 import service.strategy.Evening;
 import service.strategy.Morning;
@@ -62,20 +63,22 @@ public class GateController extends Device implements EventListener
         this.strategy = strategy;
         strategy.setBlindsPosition(window);
         strategy.setCondition(door, window);
+        HouseLogger.log("Current gate strategy was changed to " + strategy.getClass().getSimpleName());
     }
 
     /**
      * Method for tests
-     * @return Strategy name
+     * @return Current strategy name
      */
     public String getStrategy()
     {
-        return strategy.getClass().getName();
+        return strategy.getClass().getSimpleName();
     }
 
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {

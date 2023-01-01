@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.GateController;
 import model.device.NetworkSettings;
+import service.HouseLogger;
 
 public class GateControllerBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class GateControllerBuilder implements DeviceBuilder
 
     public GateController getResult()
     {
+        HouseLogger.log("New " + name + " was created by GateControllerBuilder");
         return new GateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

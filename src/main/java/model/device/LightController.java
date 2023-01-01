@@ -1,6 +1,7 @@
 package model.device;
 
 import model.Event;
+import service.HouseLogger;
 import service.observer.EventListener;
 import service.visitor.Visitor;
 
@@ -32,6 +33,7 @@ public class LightController extends Device implements EventListener
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
@@ -50,6 +52,7 @@ public class LightController extends Device implements EventListener
      */
     public void setLightInTheRoom(boolean newState)
     {
+        HouseLogger.log("Light controller " + name + " set light at the room " + room + " to value " + newState);
         if (lightInTheRoom != newState) {
             lightInTheRoom = newState;
             increaseDeviceWear(0.01);

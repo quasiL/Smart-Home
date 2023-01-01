@@ -11,6 +11,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import service.HouseLogger;
 
 public class PDFExportElectricityConsumption implements Visitor
 {
@@ -59,6 +60,8 @@ public class PDFExportElectricityConsumption implements Visitor
 
             document.add(table);
             document.close();
+            HouseLogger.log("A report " + file + " on the consumption of electricity by devices has been created. " +
+                    "Check reports directory");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,6 +91,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitClimateController(ClimateController climateController)
     {
+        HouseLogger.log("Statistics from all Climate Controllers for the report" + file + "was collected");
         return new String[]{
                 climateController.getName(),
                 Integer.toString(climateController.getRoom()),
@@ -98,6 +102,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitGateController(GateController gateController)
     {
+        HouseLogger.log("Statistics from all Gate Controllers for the report" + file + "was collected");
         return new String[]{
                 gateController.getName(),
                 Integer.toString(gateController.getRoom()),
@@ -108,6 +113,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitLightController(LightController lightController)
     {
+        HouseLogger.log("Statistics from all Light Controllers for the report" + file + "was collected");
         return new String[]{
                 lightController.getName(),
                 Integer.toString(lightController.getRoom()),
@@ -118,6 +124,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitWaterController(WaterController waterController)
     {
+        HouseLogger.log("Statistics from all Water Controllers for the report" + file + "was collected");
         return new String[]{
                 waterController.getName(),
                 Integer.toString(waterController.getRoom()),
@@ -128,6 +135,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitSoundSystem(SoundSystem soundSystem)
     {
+        HouseLogger.log("Statistics from the Sound System for the report" + file + "was collected");
         return new String[]{
                 soundSystem.getName(),
                 Integer.toString(soundSystem.getRoom()),
@@ -138,6 +146,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitSignaling(Signaling signaling)
     {
+        HouseLogger.log("Statistics from the Signaling for the report" + file + "was collected");
         return new String[]{
                 signaling.getName(),
                 Integer.toString(signaling.getRoom()),
@@ -148,6 +157,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitSmokeDetector(SmokeDetector smokeDetector)
     {
+        HouseLogger.log("Statistics from all Smoke Detectors for the report" + file + "was collected");
         return new String[]{
                 smokeDetector.getName(),
                 Integer.toString(smokeDetector.getRoom()),
@@ -158,6 +168,7 @@ public class PDFExportElectricityConsumption implements Visitor
     @Override
     public String[] visitTemperatureSensor(TemperatureSensor temperatureSensor)
     {
+        HouseLogger.log("Statistics from all Temperature Sensors for the report" + file + "was collected");
         return new String[]{
                 temperatureSensor.getName(),
                 Integer.toString(temperatureSensor.getRoom()),

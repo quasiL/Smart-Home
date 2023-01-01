@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.ClimateController;
 import model.device.NetworkSettings;
+import service.HouseLogger;
 
 public class ClimateControllerBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class ClimateControllerBuilder implements DeviceBuilder
 
     public ClimateController getResult()
     {
+        HouseLogger.log("New " + name + " was created by ClimateControllerBuilder");
         return new ClimateController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

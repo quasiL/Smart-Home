@@ -3,6 +3,7 @@ package service.strategy;
 import model.gate.Door;
 import model.gate.GateCondition;
 import model.gate.Window;
+import service.HouseLogger;
 
 public class Morning implements Strategy
 {
@@ -15,6 +16,7 @@ public class Morning implements Strategy
         switch (window.getCondition()) {
             case LOCKED, CLOSED -> door.setCondition(GateCondition.OPENED);
         }
+        HouseLogger.log("Door and window changed their state");
     }
 
     @Override

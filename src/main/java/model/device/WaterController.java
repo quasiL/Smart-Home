@@ -1,6 +1,7 @@
 package model.device;
 
 import model.Event;
+import service.HouseLogger;
 import service.observer.EventListener;
 import service.visitor.Visitor;
 
@@ -27,6 +28,7 @@ public class WaterController extends Device implements EventListener
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {

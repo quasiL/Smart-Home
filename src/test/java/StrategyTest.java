@@ -28,6 +28,6 @@ public class StrategyTest
     @Order(0)
     void checkIfMorningStrategySetByDefault_isMorning_returnsMorningStrategy()
     {
-        Assertions.assertEquals(gateController.getStrategy(), "service.strategy.Morning");
+        Assertions.assertEquals(gateController.getStrategy(), "Morning");
     }
 }

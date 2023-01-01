@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.LightController;
 import model.device.NetworkSettings;
+import service.HouseLogger;
 
 public class LightControllerBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class LightControllerBuilder implements DeviceBuilder
 
     public LightController getResult()
     {
+        HouseLogger.log("New " + name + " was created by LightControllerBuilder");
         return new LightController(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

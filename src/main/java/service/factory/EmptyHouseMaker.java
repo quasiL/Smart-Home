@@ -7,6 +7,7 @@ import model.resident.Animal;
 import model.resident.Person;
 import model.resident.Resident;
 import model.resident.TypeOfAction;
+import service.HouseLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class EmptyHouseMaker extends HouseMaker
                 house.addRoom(room);
             }
         }
+        HouseLogger.log("New EmptyHouse was created by EmptyHouseMaker");
         return house;
     }
 }

@@ -2,6 +2,7 @@ package model.device;
 
 import config.Config;
 import model.Event;
+import service.HouseLogger;
 import service.observer.EventListener;
 import service.state.OffState;
 import service.state.State;
@@ -44,6 +45,7 @@ public class SoundSystem extends Device implements EventListener
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {

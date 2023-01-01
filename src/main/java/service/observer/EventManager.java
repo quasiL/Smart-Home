@@ -2,6 +2,7 @@ package service.observer;
 
 import model.Event;
 import model.EventType;
+import service.HouseLogger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class EventManager
 
     public EventManager(EventType... events)
     {
+        HouseLogger.log("EventManager for the house was created");
         for (EventType event : events) {
             this.listeners.put(event, new ArrayList<>());
         }
@@ -33,6 +35,7 @@ public class EventManager
 
     public void notify(Event event)
     {
+        HouseLogger.log("All relevant listeners have been notified of the event " + event.getEventType());
         List<EventListener> users = listeners.get(event.getEventType());
         for (EventListener listener : users) {
             listener.update(event);

@@ -1,5 +1,6 @@
 package model.device;
 
+import service.HouseLogger;
 import service.visitor.Visitor;
 
 import java.time.LocalDate;
@@ -65,6 +66,7 @@ public abstract class Device implements BasicActions
             writer.write("Is on: " + isEnable());
             writer.newLine();
             writer.close();
+            HouseLogger.log("Report " + fileName + " was created. Check reports directory");
         } catch (IOException e) {
             System.out.println("Error exporting statistics: " + e.getMessage());
         }
@@ -77,11 +79,14 @@ public abstract class Device implements BasicActions
 
     public void restart()
     {
-        //add something to the log
+        HouseLogger.log("Device " + name + " was manually restarted");
         enable = true;
     }
 
-    public void synchronizeTime() {}
+    public void synchronizeTime()
+    {
+        HouseLogger.log("Device " + name + " has synchronize it's time");
+    }
 
     public LocalDate getGuarantee()
     {

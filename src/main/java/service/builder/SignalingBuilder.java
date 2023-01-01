@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.NetworkSettings;
 import model.device.Signaling;
+import service.HouseLogger;
 
 public class SignalingBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class SignalingBuilder implements DeviceBuilder
 
     public Signaling getResult()
     {
+        HouseLogger.log("New " + name + " was created by SignalingBuilder");
         return new Signaling(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

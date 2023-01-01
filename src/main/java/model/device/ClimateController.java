@@ -2,6 +2,7 @@ package model.device;
 
 import config.Config;
 import model.Event;
+import service.HouseLogger;
 import service.observer.EventListener;
 import service.visitor.Visitor;
 
@@ -29,6 +30,7 @@ public class ClimateController extends Device implements EventListener
     @Override
     public void update(Event event)
     {
+        HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 if (isEnable()) {
@@ -66,6 +68,7 @@ public class ClimateController extends Device implements EventListener
     public void setTemperature(int temperature)
     {
         this.temperature += temperature;
+        HouseLogger.log("Temperature controller " + name + " set temperature to value " + temperature);
         increaseElectricityConsumption(10 * temperature);
         increaseDeviceWear(0.01);
     }

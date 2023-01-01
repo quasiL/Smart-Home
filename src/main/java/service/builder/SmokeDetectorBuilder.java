@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.NetworkSettings;
 import model.device.SmokeDetector;
+import service.HouseLogger;
 
 public class SmokeDetectorBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class SmokeDetectorBuilder implements DeviceBuilder
 
     public SmokeDetector getResult()
     {
+        HouseLogger.log("New " + name + " was created by SmokeDetectorBuilder");
         return new SmokeDetector(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

@@ -3,6 +3,7 @@ package service.builder;
 import model.device.Battery;
 import model.device.NetworkSettings;
 import model.device.TemperatureSensor;
+import service.HouseLogger;
 
 public class TemperatureSensorBuilder implements DeviceBuilder
 {
@@ -58,6 +59,7 @@ public class TemperatureSensorBuilder implements DeviceBuilder
 
     public TemperatureSensor getResult()
     {
+        HouseLogger.log("New " + name + " was created by TemperatureSensorBuilder");
         return new TemperatureSensor(name, manufacturer, firmwareVersion, battery, networkSettings, guarantee, room);
     }
 }

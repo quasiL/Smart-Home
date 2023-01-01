@@ -57,6 +57,10 @@ public class WaterControllerBuilder implements DeviceBuilder
         this.room = room;
     }
 
+    /**
+     * Method for creating new instance of WaterController
+     * @return new WaterController
+     */
     public WaterController getResult()
     {
         HouseLogger.log("New " + name + " was created by WaterControllerBuilder");

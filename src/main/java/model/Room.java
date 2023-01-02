@@ -26,7 +26,7 @@ public class Room
 
     public List<Resident> getResidents()
     {
-        return residents;
+        return new ArrayList<>(residents);
     }
 
     public void addResident(Person person)
@@ -41,7 +41,7 @@ public class Room
 
     public List<Device> getDevices()
     {
-        return devices;
+        return new ArrayList<>(devices);
     }
 
     public void addDevice(Device device)

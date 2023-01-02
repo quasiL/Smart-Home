@@ -1,6 +1,6 @@
 # Popis
 
-Pattern **Factory** se používá k sestavení různých konfigurací domů na základě globálního konfiguračního souboru. K dispozici jsou celkem tři konfigurac: Simple House, Extended House a Empty House.
+Pattern **Factory** se používá k sestavení různých konfigurací domů na základě globálního konfiguračního souboru. K dispozici jsou celkem tři konfigurac: Simple House, Extended House a Empty House. Pattern **Builder** se používá k vytváření zařízení.
 
 Pro definování události a možnosti jejího následného zpracování se používá pattern **Observer**, mechanismus předplatného pro zařízení a obyvatele. Když nastane určitá událost, zareagují na ni ti, kdo jsou k odběru této události.
 

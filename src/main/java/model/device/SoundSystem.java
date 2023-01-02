@@ -150,24 +150,6 @@ public class SoundSystem extends Device implements EventListener
     }
 
     /**
-     * Method for adding a music track to the list
-     * @param track new track
-     */
-    public void addTrack(String track)
-    {
-        musicTracks.add(track);
-    }
-
-    /**
-     * Method for removing a music track from the list
-     * @param track removed track
-     */
-    public void removeTrack(String track)
-    {
-        musicTracks.remove(track);
-    }
-
-    /**
      * Method for getting the current state of the sound system
      * @return state
      */
@@ -219,6 +201,15 @@ public class SoundSystem extends Device implements EventListener
     public void addMusicTrack(String track)
     {
         this.musicTracks.add(track);
+    }
+
+    /**
+     * Method for removing a music track from the list
+     * @param track removed track
+     */
+    public void removeTrack(String track)
+    {
+        musicTracks.remove(track);
     }
 
     @Override

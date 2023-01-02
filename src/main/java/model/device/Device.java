@@ -152,7 +152,7 @@ public abstract class Device implements BasicActions
         return electricityConsumption;
     }
 
-    public void increaseElectricityConsumption(int electricityConsumption)
+    protected void increaseElectricityConsumption(int electricityConsumption)
     {
         this.electricityConsumption += electricityConsumption;
     }
@@ -162,7 +162,7 @@ public abstract class Device implements BasicActions
         return deviceWear;
     }
 
-    public void increaseDeviceWear(double deviceWear)
+    protected void increaseDeviceWear(double deviceWear)
     {
         this.deviceWear += deviceWear;
     }

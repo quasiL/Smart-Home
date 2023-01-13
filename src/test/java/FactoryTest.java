@@ -1,9 +1,9 @@
-import model.house.EmptyHouse;
-import model.house.ExtendedHouse;
-import model.house.SimpleHouse;
-import service.factory.EmptyHouseMaker;
-import service.factory.ExtendedHouseMaker;
-import service.factory.SimpleHouseMaker;
+import cz.cvut.omo.sp.smart_home.model.house.EmptyHouse;
+import cz.cvut.omo.sp.smart_home.model.house.ExtendedHouse;
+import cz.cvut.omo.sp.smart_home.model.house.SimpleHouse;
+import cz.cvut.omo.sp.smart_home.service.factory.EmptyHouseMaker;
+import cz.cvut.omo.sp.smart_home.service.factory.ExtendedHouseMaker;
+import cz.cvut.omo.sp.smart_home.service.factory.SimpleHouseMaker;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

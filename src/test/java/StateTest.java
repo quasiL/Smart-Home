@@ -1,6 +1,6 @@
-import model.device.Battery;
-import model.device.NetworkSettings;
-import model.device.SoundSystem;
+import cz.cvut.omo.sp.smart_home.model.device.Battery;
+import cz.cvut.omo.sp.smart_home.model.device.NetworkSettings;
+import cz.cvut.omo.sp.smart_home.model.device.SoundSystem;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

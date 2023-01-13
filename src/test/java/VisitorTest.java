@@ -1,7 +1,7 @@
-import model.house.House;
-import service.factory.ExtendedHouseMaker;
-import service.factory.HouseMaker;
-import service.visitor.PDFExportElectricityConsumption;
+import cz.cvut.omo.sp.smart_home.model.house.House;
+import cz.cvut.omo.sp.smart_home.service.factory.ExtendedHouseMaker;
+import cz.cvut.omo.sp.smart_home.service.factory.HouseMaker;
+import cz.cvut.omo.sp.smart_home.service.visitor.PDFExportElectricityConsumption;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

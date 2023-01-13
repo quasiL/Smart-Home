@@ -1,7 +1,7 @@
-import model.Event;
-import model.EventType;
-import model.device.*;
-import service.observer.EventManager;
+import cz.cvut.omo.sp.smart_home.model.Event;
+import cz.cvut.omo.sp.smart_home.model.EventType;
+import cz.cvut.omo.sp.smart_home.model.device.ClimateController;
+import cz.cvut.omo.sp.smart_home.service.observer.EventManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;

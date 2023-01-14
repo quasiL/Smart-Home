@@ -25,14 +25,14 @@ public abstract class Device implements BasicActions
     protected int electricityConsumption;
     protected double deviceWear;
 
-    public Device(String name,
-                  String manufacturer,
-                  String firmwareVersion,
-                  DeviceType type,
-                  Battery battery,
-                  NetworkSettings networkSettings,
-                  int guarantee,
-                  int room)
+    protected Device(String name,
+                     String manufacturer,
+                     String firmwareVersion,
+                     DeviceType type,
+                     Battery battery,
+                     NetworkSettings networkSettings,
+                     int guarantee,
+                     int room)
     {
         this.name = name;
         this.manufacturer = manufacturer;

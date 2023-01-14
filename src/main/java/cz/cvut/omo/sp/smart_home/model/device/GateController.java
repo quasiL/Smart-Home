@@ -86,17 +86,22 @@ public class GateController extends Device implements EventListener
                     increaseElectricityConsumption(700);
                 }
             }
+
             case EVENING -> {
                 setStrategy(evening);
                 increaseDeviceWear(0.02);
                 increaseElectricityConsumption(20);
             }
+
             case MORNING -> {
                 setStrategy(morning);
                 increaseDeviceWear(0.02);
                 increaseElectricityConsumption(20);
             }
+
             case FLOOD -> setEnable(false);
+
+            default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }
 

@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Room
 {
-    private List<Resident> residents;
-    private List<Device> devices;
+    private final List<Resident> residents;
+    private final List<Device> devices;
 
     public Room()
     {

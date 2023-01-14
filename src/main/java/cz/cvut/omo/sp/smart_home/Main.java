@@ -15,27 +15,18 @@ public class Main
     {
         Boolean isValid = false;
         int userChoice;
+        String text = "SMART HOUSE SIMULATION\nPlease select which simulation do you want to run:\n1 - Simple house\n2 - Extended house\n\n";
+        System.out.println(text);
 
-        System.out.println(
-                "SMART HOUSE SIMULATION\n" +
-                "Please select which simulation do you want to run:\n" +
-                        "1 - Simple house\n" +
-                        "2 - Extended house\n\n");
-
-        while (true) {
-            if (isValid)
-                break;
-
+        while (Boolean.FALSE.equals(isValid)) {
             Scanner input = new Scanner(System.in);
             System.out.print("Your choice: ");
 
             if (!input.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
-            }
-
-            else {
+            } else {
                 userChoice = input.nextInt();
-                if ( userChoice == 1 || userChoice == 2) {
+                if (userChoice == 1 || userChoice == 2) {
                     isValid = true;
                     System.out.println("Option " + userChoice + " selected. Generating simulation...");
                     try {
@@ -44,8 +35,7 @@ public class Main
                         e.printStackTrace();
                     }
                     setSimulation(userChoice);
-                }
-                else
+                } else
                     System.out.println("Invalid selection. Please enter 1 or 2.");
             }
         }

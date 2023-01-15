@@ -9,7 +9,7 @@ public abstract class State
      */
     SoundSystem soundSystem;
 
-    public State(SoundSystem soundSystem)
+    protected State(SoundSystem soundSystem)
     {
         this.soundSystem = soundSystem;
     }

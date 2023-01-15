@@ -13,12 +13,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Boolean isValid = false;
+        boolean isValid = false;
         int userChoice;
         String text = "SMART HOUSE SIMULATION\nPlease select which simulation do you want to run:\n1 - Simple house\n2 - Extended house\n\n";
         System.out.println(text);
 
-        while (Boolean.FALSE.equals(isValid)) {
+        while (!isValid) {
             Scanner input = new Scanner(System.in);
             System.out.print("Your choice: ");
 
@@ -33,6 +33,7 @@ public class Main
                         Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                     setSimulation(userChoice);
                 } else

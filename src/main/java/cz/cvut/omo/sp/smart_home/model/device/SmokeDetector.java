@@ -38,6 +38,7 @@ public class SmokeDetector extends Device implements EventListener
                 }
             }
             case FLOOD -> setEnable(false);
+            default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }
 

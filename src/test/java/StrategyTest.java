@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-public class StrategyTest
+class StrategyTest
 {
     private GateController gateController;
 
@@ -28,6 +28,6 @@ public class StrategyTest
     @Order(0)
     void checkIfMorningStrategySetByDefault_isMorning_returnsMorningStrategy()
     {
-        Assertions.assertEquals(gateController.getStrategy(), "Morning");
+        Assertions.assertEquals("Morning", gateController.getStrategy());
     }
 }

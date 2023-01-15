@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class ObserverTest
+class ObserverTest
 {
     private EventManager eventManager;
     private ClimateController climateController;

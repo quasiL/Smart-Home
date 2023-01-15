@@ -10,7 +10,7 @@ public abstract class HouseMaker
      */
     protected final Director director;
 
-    public HouseMaker()
+    protected HouseMaker()
     {
         this.director = new Director();
     }

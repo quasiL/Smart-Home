@@ -9,8 +9,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Objects;
+@SuppressWarnings("FieldCanBeLocal")
 
-public class VisitorTest
+class VisitorTest
 {
     private HouseMaker houseMaker;
     private House house;

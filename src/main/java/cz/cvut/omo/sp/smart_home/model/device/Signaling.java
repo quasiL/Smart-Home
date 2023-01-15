@@ -44,6 +44,7 @@ public class Signaling extends Device implements EventListener
                 }
                 setEnable(false);
             }
+            default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }
 

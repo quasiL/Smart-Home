@@ -5,19 +5,25 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class HouseLogger
 {
     /**
+     * Private constructor for utility class
+     */
+    private HouseLogger() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    /**
      * Logger
      */
-    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Logger.class.getName());
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(HouseLogger.class.getName());
 
     /**
      * Log filename
      */
-    private static final String file = "logs/log_" +
+    private static final String FILE = "logs/log_" +
             LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH_mm_ss")) + ".txt";
 
     /**
@@ -26,12 +32,10 @@ public class HouseLogger
      */
     public static void log(String message)
     {
-        try {
-            FileWriter fileWriter = new FileWriter(file, true);
+        try (FileWriter fileWriter = new FileWriter(FILE, true)) {
             String log = "[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) +
                     "] " + message;
             fileWriter.write(log + '\n');
-            fileWriter.close();
             System.out.println(log);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Error writing to log file", e);

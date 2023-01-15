@@ -52,21 +52,23 @@ public abstract class Device implements BasicActions
     {
         try {
             File file = new File("reports/" + fileName);
-            file.createNewFile();
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write("Name: " + name + " " + manufacturer);
-            writer.newLine();
-            writer.write("Firmware Version: " + firmwareVersion);
-            writer.newLine();
-            writer.write("Electricity consumption: " + electricityConsumption + " watts");
-            writer.newLine();
-            writer.write("Device wear: " + deviceWear * 100 + " %");
-            writer.newLine();
-            writer.write("Is on: " + isEnable());
-            writer.newLine();
-            writer.close();
-            HouseLogger.log("Report " + fileName + " was created. Check reports directory");
+            if(file.createNewFile()){
+                try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    writer.write("Name: " + name + " " + manufacturer);
+                    writer.newLine();
+                    writer.write("Firmware Version: " + firmwareVersion);
+                    writer.newLine();
+                    writer.write("Electricity consumption: " + electricityConsumption + " watts");
+                    writer.newLine();
+                    writer.write("Device wear: " + deviceWear * 100 + " %");
+                    writer.newLine();
+                    writer.write("Is on: " + isEnable());
+                    writer.newLine();
+                    HouseLogger.log("Report " + fileName + " was created. Check reports directory");
+                }
+            } else {
+                HouseLogger.log("Error: can not created report " + fileName + ", file already existed.");
+            }
         } catch (IOException e) {
             System.out.println("Error exporting statistics: " + e.getMessage());
         }
@@ -74,7 +76,7 @@ public abstract class Device implements BasicActions
 
     public String[] accept(Visitor visitor)
     {
-        return null;
+        return new String[0];
     }
 
     public void restart()

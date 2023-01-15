@@ -21,7 +21,7 @@ public class SoundSystem extends Device implements EventListener
     /**
      * The list of available music tracks
      */
-    private List<String> musicTracks;
+    private final List<String> musicTracks;
 
     /**
      * The current music track being played
@@ -89,6 +89,7 @@ public class SoundSystem extends Device implements EventListener
                 }
             }
             case FLOOD -> setEnable(false);
+            default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }
 

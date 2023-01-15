@@ -4,17 +4,14 @@ import cz.cvut.omo.sp.smart_home.model.Event;
 import cz.cvut.omo.sp.smart_home.model.EventType;
 import cz.cvut.omo.sp.smart_home.service.HouseLogger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EventManager
 {
     /**
      * HashMap listener - events
      */
-    Map<EventType, List<EventListener>> listeners = new HashMap<>();
+    Map<EventType, List<EventListener>> listeners = new EnumMap<>(EventType.class);
 
     public EventManager(EventType... events)
     {

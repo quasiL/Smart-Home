@@ -9,7 +9,7 @@ public abstract class Resident implements EventListener
     private final String name;
     private final int age;
 
-    public Resident(String name, int age)
+    protected Resident(String name, int age)
     {
         this.name = name;
         this.age = age;

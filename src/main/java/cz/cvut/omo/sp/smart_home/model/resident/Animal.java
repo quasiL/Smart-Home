@@ -6,7 +6,7 @@ import cz.cvut.omo.sp.smart_home.service.HouseLogger;
 public class Animal extends Resident
 {
     private final String kindOfAnimal;
-    private boolean hunger;
+    private final boolean hunger;
     private int hoursWithoutFood;
 
     public Animal(String name, int age, String kindOfAnimal)
@@ -33,7 +33,9 @@ public class Animal extends Resident
                 HouseLogger.log(getKindOfAnimal() + " " + getName() + " get event " + event.getEventType());
                 getFood();
             }
-            case CHANGE_ACTION -> {}
+            case CHANGE_ACTION -> HouseLogger.log(getKindOfAnimal() + " " + getName() + " get event " + event.getEventType());
+
+            default -> HouseLogger.log(getKindOfAnimal() + " " + getName() + " unable to get this event.");
         }
     }
 

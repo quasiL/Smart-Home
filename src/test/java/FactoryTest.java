@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-public class FactoryTest
+class FactoryTest
 {
     private EmptyHouse emptyHouse;
     private SimpleHouse simpleHouse;

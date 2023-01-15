@@ -20,6 +20,7 @@ public class Person extends Resident
         switch (event.getEventType()) {
             case CHANGE_ACTION -> setAction();
             case ANIMAL_HUNGRY -> feedAnimal();
+            default -> HouseLogger.log("Person " + getName() + " unable to get event");
         }
     }
 

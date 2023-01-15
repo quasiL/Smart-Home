@@ -38,21 +38,17 @@ public class ClimateController extends Device implements EventListener
                     increaseElectricityConsumption(1000);
                 }
             }
-
             case WARM -> {
                 setTemperature(-2);
                 increaseDeviceWear(0.02);
                 increaseElectricityConsumption(15);
             }
-
             case COLD -> {
                 setTemperature(2);
                 increaseDeviceWear(0.02);
                 increaseElectricityConsumption(15);
             }
-
             case FLOOD -> setEnable(false);
-
             default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }

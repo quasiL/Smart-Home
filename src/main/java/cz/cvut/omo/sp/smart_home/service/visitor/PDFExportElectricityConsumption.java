@@ -18,7 +18,6 @@ public class PDFExportElectricityConsumption implements Visitor
     private final String file;
     private final Font catFont;
     private final Font smallBold;
-    private final Font subFont;
 
     public PDFExportElectricityConsumption()
     {
@@ -26,7 +25,6 @@ public class PDFExportElectricityConsumption implements Visitor
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH_mm_ss")) + ".pdf";
         catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
         smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
-        subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
     }
 
     public void export(List<Device> devices)

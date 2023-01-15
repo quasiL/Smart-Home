@@ -36,11 +36,8 @@ public class LightController extends Device implements EventListener
                     increaseElectricityConsumption(300);
                 }
             }
-
             case MORNING -> setLightInTheRoom(false);
-
             case FLOOD -> setEnable(false);
-
             default -> HouseLogger.log("Device " + name + " unable to get this event.");
         }
     }

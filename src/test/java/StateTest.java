@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-public class StateTest
+class StateTest
 {
     private SoundSystem soundSystem;
     private String track1;

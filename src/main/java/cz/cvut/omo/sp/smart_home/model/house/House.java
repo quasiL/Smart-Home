@@ -10,7 +10,6 @@ import cz.cvut.omo.sp.smart_home.service.observer.EventManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class House implements HouseConfiguration
 {
@@ -18,7 +17,7 @@ public abstract class House implements HouseConfiguration
     public EventManager eventManager;
     private final Config config;
 
-    public House()
+    protected House()
     {
         this.rooms = new ArrayList<>();
         config = new Config("default");
@@ -63,7 +62,7 @@ public abstract class House implements HouseConfiguration
         newList = getRooms().stream()
                 .map(Room::getDevices)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+                .toList();
         return newList;
     }
 }

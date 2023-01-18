@@ -1,6 +1,6 @@
-import cz.cvut.omo.sp.smart_home.model.device.Battery;
-import cz.cvut.omo.sp.smart_home.model.device.GateController;
-import cz.cvut.omo.sp.smart_home.model.device.NetworkSettings;
+import cz.cvut.omo.sp.sh.model.device.Battery;
+import cz.cvut.omo.sp.sh.model.device.GateController;
+import cz.cvut.omo.sp.sh.model.device.NetworkSettings;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

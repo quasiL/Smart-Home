@@ -1,8 +1,8 @@
-import cz.cvut.omo.sp.smart_home.model.device.Battery;
-import cz.cvut.omo.sp.smart_home.model.device.ClimateController;
-import cz.cvut.omo.sp.smart_home.model.device.NetworkSettings;
-import cz.cvut.omo.sp.smart_home.service.builder.ClimateControllerBuilder;
-import cz.cvut.omo.sp.smart_home.service.builder.Director;
+import cz.cvut.omo.sp.sh.model.device.Battery;
+import cz.cvut.omo.sp.sh.model.device.ClimateController;
+import cz.cvut.omo.sp.sh.model.device.NetworkSettings;
+import cz.cvut.omo.sp.sh.service.builder.ClimateControllerBuilder;
+import cz.cvut.omo.sp.sh.service.builder.Director;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

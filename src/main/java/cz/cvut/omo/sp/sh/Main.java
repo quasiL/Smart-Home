@@ -10,10 +10,8 @@ import cz.cvut.omo.sp.sh.service.visitor.PDFExportElectricityConsumption;
 
 import java.util.Scanner;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
+public class Main {
+    public static void main(String[] args) {
         boolean isValid = false;
         int userChoice;
         String text = "SMART HOUSE SIMULATION\nPlease select which simulation do you want to run:\n1 - Simple house\n2 - Extended house\n\n";
@@ -44,8 +42,7 @@ public class Main
         }
     }
 
-    static void setSimulation(int option) 
-    {
+    static void setSimulation(int option) {
         switch (option) {
             case 1 -> {
                 HouseMaker houseMaker = new SimpleHouseMaker();

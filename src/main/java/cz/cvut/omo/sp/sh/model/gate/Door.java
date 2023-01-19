@@ -1,21 +1,17 @@
 package cz.cvut.omo.sp.sh.model.gate;
 
-public class Door
-{
+public class Door {
     private GateCondition condition;
 
-    public Door()
-    {
+    public Door() {
         this.condition = GateCondition.OPENED;
     }
 
-    public GateCondition getCondition()
-    {
+    public GateCondition getCondition() {
         return condition;
     }
 
-    public void setCondition(GateCondition condition)
-    {
+    public void setCondition(GateCondition condition) {
         this.condition = condition;
     }
 }

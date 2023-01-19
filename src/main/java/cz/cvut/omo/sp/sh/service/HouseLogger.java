@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 
-public class HouseLogger
-{
+public class HouseLogger {
     /**
      * Logger
      */
@@ -23,17 +22,16 @@ public class HouseLogger
     /**
      * Private constructor for utility class
      */
-    private HouseLogger()
-    {
+    private HouseLogger() {
         throw new IllegalStateException("Utility class");
     }
 
     /**
      * Method for writing to the log file
+     *
      * @param message log message
      */
-    public static void log(String message)
-    {
+    public static void log(String message) {
         try (FileWriter fileWriter = new FileWriter(file, true)) {
             String log = "[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) +
                     "] " + message;

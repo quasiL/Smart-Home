@@ -1,29 +1,24 @@
 package cz.cvut.omo.sp.sh.model;
 
-public class Event
-{
+public class Event {
     private final EventType eventType;
     private final int room;
 
-    public Event(EventType eventType, int room)
-    {
+    public Event(EventType eventType, int room) {
         this.eventType = eventType;
         this.room = room;
     }
 
-    public Event(EventType eventType)
-    {
+    public Event(EventType eventType) {
         this.eventType = eventType;
         this.room = -1;
     }
 
-    public EventType getEventType()
-    {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public int getRoom()
-    {
+    public int getRoom() {
         return room;
     }
 }

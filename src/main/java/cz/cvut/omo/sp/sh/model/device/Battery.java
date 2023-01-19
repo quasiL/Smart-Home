@@ -1,16 +1,13 @@
 package cz.cvut.omo.sp.sh.model.device;
 
-public class Battery
-{
+public class Battery {
     private final int capacity;
 
-    public Battery()
-    {
+    public Battery() {
         this.capacity = 100;
     }
 
-    public int getCapacity()
-    {
+    public int getCapacity() {
         return capacity;
     }
 }

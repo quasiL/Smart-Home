@@ -1,7 +1,6 @@
 package cz.cvut.omo.sp.sh.model;
 
-public enum EventType
-{
+public enum EventType {
     HOUR_HAS_PASSED,
     EVENING,
     MORNING,

@@ -5,11 +5,9 @@ import cz.cvut.omo.sp.sh.model.gate.GateCondition;
 import cz.cvut.omo.sp.sh.model.gate.Window;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 
-public class Morning implements Strategy
-{
+public class Morning implements Strategy {
     @Override
-    public void setCondition(Door door, Window window)
-    {
+    public void setCondition(Door door, Window window) {
         boolean doorChanged;
         boolean windowChanged;
 
@@ -38,8 +36,7 @@ public class Morning implements Strategy
     }
 
     @Override
-    public void setBlindsPosition(Window window)
-    {
+    public void setBlindsPosition(Window window) {
         window.setPosition(120);
         window.setAutomatic(true);
     }

@@ -4,13 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Config
-{
+public class Config {
     private final JSONParser parser;
     private final String path;
     private int floors;
@@ -18,14 +18,12 @@ public class Config
     private int temperature;
     private JSONArray tracks;
 
-    public Config()
-    {
+    public Config() {
         path = "config/house.json";
         parser = new JSONParser();
     }
 
-    public int getFloors(String block)
-    {
+    public int getFloors(String block) {
         try {
             JSONObject config = (JSONObject) parser.parse(new FileReader(path));
             JSONObject selectedBlock = (JSONObject) config.get(block);
@@ -36,8 +34,7 @@ public class Config
         return floors;
     }
 
-    public int getRooms(String block)
-    {
+    public int getRooms(String block) {
         try {
             JSONObject config = (JSONObject) parser.parse(new FileReader(path));
             JSONObject selectedBlock = (JSONObject) config.get(block);
@@ -48,8 +45,7 @@ public class Config
         return rooms;
     }
 
-    public int getTemperature()
-    {
+    public int getTemperature() {
         try {
             JSONObject config = (JSONObject) parser.parse(new FileReader(path));
             JSONObject selectedBlock = (JSONObject) config.get("temperature");
@@ -60,8 +56,7 @@ public class Config
         return temperature;
     }
 
-    public List<String> getTracks()
-    {
+    public List<String> getTracks() {
         try {
             JSONObject config = (JSONObject) parser.parse(new FileReader(path));
             JSONObject selectedBlock = (JSONObject) config.get("tracks");

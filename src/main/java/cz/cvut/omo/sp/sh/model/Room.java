@@ -7,50 +7,41 @@ import cz.cvut.omo.sp.sh.model.resident.Resident;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room
-{
+public class Room {
     private final List<Resident> residents;
     private final List<Device> devices;
 
-    public Room()
-    {
+    public Room() {
         this.devices = new ArrayList<>();
         this.residents = new ArrayList<>();
     }
 
-    public Room(List<Resident> residents)
-    {
+    public Room(List<Resident> residents) {
         this.devices = new ArrayList<>();
         this.residents = residents;
     }
 
-    public List<Resident> getResidents()
-    {
+    public List<Resident> getResidents() {
         return new ArrayList<>(residents);
     }
 
-    public void addResident(Person person)
-    {
+    public void addResident(Person person) {
         residents.add(person);
     }
 
-    public void removeResident(Resident person)
-    {
+    public void removeResident(Resident person) {
         residents.remove(person);
     }
 
-    public List<Device> getDevices()
-    {
+    public List<Device> getDevices() {
         return new ArrayList<>(devices);
     }
 
-    public void addDevice(Device device)
-    {
+    public void addDevice(Device device) {
         devices.add(device);
     }
 
-    public void removeDevice(Device device)
-    {
+    public void removeDevice(Device device) {
         devices.remove(device);
     }
 }

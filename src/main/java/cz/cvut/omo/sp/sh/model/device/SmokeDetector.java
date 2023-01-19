@@ -5,23 +5,20 @@ import cz.cvut.omo.sp.sh.service.HouseLogger;
 import cz.cvut.omo.sp.sh.service.observer.EventListener;
 import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 
-public class SmokeDetector extends Device implements EventListener
-{
+public class SmokeDetector extends Device implements EventListener {
     public SmokeDetector(String name,
                          String manufacturer,
                          String firmwareVersion,
                          Battery battery,
                          NetworkSettings networkSettings,
                          int guarantee,
-                         int room)
-    {
+                         int room) {
         super(name, manufacturer, firmwareVersion, DeviceType.SMOKE_DETECTOR, battery, networkSettings,
                 guarantee, room);
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
@@ -43,16 +40,14 @@ public class SmokeDetector extends Device implements EventListener
     }
 
     @Override
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return visitor.visitSmokeDetector(this);
     }
 
     /**
      * Method for sensor behavior when smoke is detected
      */
-    private void fireAlarm()
-    {
+    private void fireAlarm() {
         HouseLogger.log("The sensor " + getName() + " detected smoke in the room " + getRoom());
     }
 }

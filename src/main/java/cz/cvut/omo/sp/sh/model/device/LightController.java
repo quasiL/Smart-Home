@@ -5,8 +5,7 @@ import cz.cvut.omo.sp.sh.service.HouseLogger;
 import cz.cvut.omo.sp.sh.service.observer.EventListener;
 import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 
-public class LightController extends Device implements EventListener
-{
+public class LightController extends Device implements EventListener {
     /**
      * The state of the light in the room
      */
@@ -18,16 +17,14 @@ public class LightController extends Device implements EventListener
                            Battery battery,
                            NetworkSettings networkSettings,
                            int guarantee,
-                           int room)
-    {
+                           int room) {
         super(name, manufacturer, firmwareVersion, DeviceType.LIGHT_CONTROLLER, battery, networkSettings,
                 guarantee, room);
         lightInTheRoom = false;
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
@@ -44,10 +41,10 @@ public class LightController extends Device implements EventListener
 
     /**
      * On/off the light
+     *
      * @param newState on/off
      */
-    public void setLightInTheRoom(boolean newState)
-    {
+    public void setLightInTheRoom(boolean newState) {
         HouseLogger.log("Light controller " + name + " set light at the room " + room + " to value " + newState);
         if (lightInTheRoom != newState) {
             lightInTheRoom = newState;
@@ -57,8 +54,7 @@ public class LightController extends Device implements EventListener
     }
 
     @Override
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return visitor.visitLightController(this);
     }
 }

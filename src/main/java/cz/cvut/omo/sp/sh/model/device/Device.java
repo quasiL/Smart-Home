@@ -6,8 +6,7 @@ import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public abstract class Device implements BasicActions, VisitorActions
-{
+public abstract class Device implements BasicActions, VisitorActions {
     protected final String name;
     protected final String manufacturer;
     protected final String firmwareVersion;
@@ -29,8 +28,7 @@ public abstract class Device implements BasicActions, VisitorActions
                      Battery battery,
                      NetworkSettings networkSettings,
                      int guarantee,
-                     int room)
-    {
+                     int room) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.firmwareVersion = firmwareVersion;
@@ -46,24 +44,20 @@ public abstract class Device implements BasicActions, VisitorActions
         this.deviceReport = new DeviceReport(this);
     }
 
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return new String[0];
     }
 
-    public void restart()
-    {
+    public void restart() {
         HouseLogger.log("Device " + name + " was manually restarted");
         enable = true;
     }
 
-    public void synchronizeTime()
-    {
+    public void synchronizeTime() {
         HouseLogger.log("Device " + name + " has synchronize it's time");
     }
 
-    public LocalDate getGuarantee()
-    {
+    public LocalDate getGuarantee() {
         return guarantee;
     }
 
@@ -91,58 +85,47 @@ public abstract class Device implements BasicActions, VisitorActions
         return networkSettings;
     }
 
-    public void setNetworkSettings(NetworkSettings networkSettings)
-    {
+    public void setNetworkSettings(NetworkSettings networkSettings) {
         this.networkSettings = networkSettings;
     }
 
-    public boolean isEnable()
-    {
+    public boolean isEnable() {
         return enable;
     }
 
-    public void setEnable(boolean status)
-    {
+    public void setEnable(boolean status) {
         this.enable = status;
     }
 
-    public LocalDateTime getTimeFromStart()
-    {
+    public LocalDateTime getTimeFromStart() {
         return LocalDateTime.from(timeFromStart);
     }
 
-    public LocalDateTime calculateRemainingTime()
-    {
+    public LocalDateTime calculateRemainingTime() {
         return LocalDateTime.now();
     }
 
-    public int getRoom()
-    {
+    public int getRoom() {
         return room;
     }
 
-    public int getElectricityConsumption()
-    {
+    public int getElectricityConsumption() {
         return electricityConsumption;
     }
 
-    protected void increaseElectricityConsumption(int electricityConsumption)
-    {
+    protected void increaseElectricityConsumption(int electricityConsumption) {
         this.electricityConsumption += electricityConsumption;
     }
 
-    public double getDeviceWear()
-    {
+    public double getDeviceWear() {
         return deviceWear;
     }
 
-    protected void increaseDeviceWear(double deviceWear)
-    {
+    protected void increaseDeviceWear(double deviceWear) {
         this.deviceWear += deviceWear;
     }
 
-    public DeviceReport getDeviceReport()
-    {
+    public DeviceReport getDeviceReport() {
         return deviceReport;
     }
 }

@@ -10,15 +10,13 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class BuilderTest
-{
+class BuilderTest {
     private Director director;
     private ClimateController climateController;
     private ClimateControllerBuilder climateControllerBuilder;
 
     @BeforeEach
-    void createDevicesForTestsManually()
-    {
+    void createDevicesForTestsManually() {
         climateController = new ClimateController(
                 "Climate Controller",
                 "Home Connect Co",
@@ -32,8 +30,7 @@ class BuilderTest
     // TODO Write parametrized test for all types of devices instead of this
     @Test
     @Order(0)
-    void checkIfClimateControllerHasRightAttributes_isAttributesRight_returnsClimateController()
-    {
+    void checkIfClimateControllerHasRightAttributes_isAttributesRight_returnsClimateController() {
         director = new Director();
         climateControllerBuilder = new ClimateControllerBuilder();
         director.buildClimateController(climateControllerBuilder, 1);
@@ -46,8 +43,7 @@ class BuilderTest
 
     @Test
     @Order(1)
-    void checkIfClimateControllerCreatedRight_areMethodsCallRight_returnsClimateController()
-    {
+    void checkIfClimateControllerCreatedRight_areMethodsCallRight_returnsClimateController() {
         climateControllerBuilder = Mockito.mock(ClimateControllerBuilder.class);
         director = Mockito.mock(Director.class);
         director.buildClimateController(climateControllerBuilder, 1);

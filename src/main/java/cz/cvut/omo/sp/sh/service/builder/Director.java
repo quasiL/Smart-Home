@@ -3,15 +3,14 @@ package cz.cvut.omo.sp.sh.service.builder;
 import cz.cvut.omo.sp.sh.model.device.Battery;
 import cz.cvut.omo.sp.sh.model.device.NetworkSettings;
 
-public class Director
-{
+public class Director {
     /**
      * Method for creating Gate Controller
+     *
      * @param builder GateControllerBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildGateController(DeviceBuilder builder, int room)
-    {
+    public void buildGateController(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Gate Controller");
@@ -23,11 +22,11 @@ public class Director
 
     /**
      * Method for creating Climate Controller
+     *
      * @param builder ClimateControllerBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildClimateController(DeviceBuilder builder, int room)
-    {
+    public void buildClimateController(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Climate Controller");
@@ -39,11 +38,11 @@ public class Director
 
     /**
      * Method for creating Light Controller
+     *
      * @param builder LightControllerBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildLightController(DeviceBuilder builder, int room)
-    {
+    public void buildLightController(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Light Controller");
@@ -55,11 +54,11 @@ public class Director
 
     /**
      * Method for creating Signaling
+     *
      * @param builder SignalingBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildSignaling(DeviceBuilder builder, int room)
-    {
+    public void buildSignaling(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Signaling");
@@ -71,11 +70,11 @@ public class Director
 
     /**
      * Method for creating Water Controller
+     *
      * @param builder WaterControllerBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildWaterController(DeviceBuilder builder, int room)
-    {
+    public void buildWaterController(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Water Controller");
@@ -87,11 +86,11 @@ public class Director
 
     /**
      * Method for creating Sound System
+     *
      * @param builder SoundSystemBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildSoundSystem(DeviceBuilder builder, int room)
-    {
+    public void buildSoundSystem(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Sound System");
@@ -103,11 +102,11 @@ public class Director
 
     /**
      * Method for creating Smoke Detector
+     *
      * @param builder SmokeDetectorBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildSmokeDetector(DeviceBuilder builder, int room)
-    {
+    public void buildSmokeDetector(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Smoke Detector");
@@ -119,11 +118,11 @@ public class Director
 
     /**
      * Method for creating Temperature Sensor
+     *
      * @param builder TemperatureSensorBuilder
-     * @param room number of room
+     * @param room    number of room
      */
-    public void buildTemperatureSensor(DeviceBuilder builder, int room)
-    {
+    public void buildTemperatureSensor(DeviceBuilder builder, int room) {
         builder.setBattery(new Battery());
         builder.setNetworkSettings(new NetworkSettings());
         builder.setName("Temperature Sensor");

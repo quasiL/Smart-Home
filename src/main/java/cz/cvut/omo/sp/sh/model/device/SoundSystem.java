@@ -11,8 +11,7 @@ import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoundSystem extends Device implements EventListener
-{
+public class SoundSystem extends Device implements EventListener {
     /**
      * The current state of the sound system
      */
@@ -34,8 +33,7 @@ public class SoundSystem extends Device implements EventListener
                        Battery battery,
                        NetworkSettings networkSettings,
                        int guarantee,
-                       int room)
-    {
+                       int room) {
         super(name, manufacturer, firmwareVersion, DeviceType.SOUND_SYSTEM, battery, networkSettings, guarantee, room);
         this.state = new OffState(this);
         Config config = new Config();
@@ -43,8 +41,7 @@ public class SoundSystem extends Device implements EventListener
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
@@ -96,126 +93,119 @@ public class SoundSystem extends Device implements EventListener
     /**
      * Method for turning the sound system on
      */
-    public void turnOn()
-    {
+    public void turnOn() {
         state.turnOn();
     }
 
     /**
      * Method for turning the sound system off
      */
-    public void turnOff()
-    {
+    public void turnOff() {
         state.turnOff();
     }
 
     /**
      * Method for playing a music track
+     *
      * @param track music track
      */
-    public void playTrack(String track)
-    {
+    public void playTrack(String track) {
         state.playTrack(track);
     }
 
     /**
      * Method for skipping to the next music track
      */
-    public void nextTrack()
-    {
+    public void nextTrack() {
         state.nextTrack();
     }
 
     /**
      * Method for skipping to the previous music track
      */
-    public void previousTrack()
-    {
+    public void previousTrack() {
         state.previousTrack();
     }
 
     /**
      * Method for pausing the music
      */
-    public void pause()
-    {
+    public void pause() {
         state.pause();
     }
 
     /**
      * Method for resuming the music
      */
-    public void resume()
-    {
+    public void resume() {
         state.resume();
     }
 
     /**
      * Method for getting the current state of the sound system
+     *
      * @return state
      */
-    public State getState()
-    {
+    public State getState() {
         return state;
     }
 
     /**
      * Method for setting the current state of the sound system
+     *
      * @param state state
      */
-    public void setState(State state)
-    {
+    public void setState(State state) {
         this.state = state;
     }
 
     /**
      * Method for getting the current music track being played
+     *
      * @return current track
      */
-    public String getCurrentTrack()
-    {
+    public String getCurrentTrack() {
         return currentTrack;
     }
 
     /**
      * Method for setting the current music track being played
+     *
      * @param currentTrack current track
      */
-    public void setCurrentTrack(String currentTrack)
-    {
+    public void setCurrentTrack(String currentTrack) {
         this.currentTrack = currentTrack;
     }
 
     /**
      * Method for getting the list of music tracks
+     *
      * @return music tracks
      */
-    public List<String> getMusicTracks()
-    {
+    public List<String> getMusicTracks() {
         return new ArrayList<>(musicTracks);
     }
 
     /**
      * Method for adding a new track to the list
+     *
      * @param track new track
      */
-    public void addMusicTrack(String track)
-    {
+    public void addMusicTrack(String track) {
         this.musicTracks.add(track);
     }
 
     /**
      * Method for removing a music track from the list
+     *
      * @param track removed track
      */
-    public void removeTrack(String track)
-    {
+    public void removeTrack(String track) {
         musicTracks.remove(track);
     }
 
     @Override
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return visitor.visitSoundSystem(this);
     }
 }

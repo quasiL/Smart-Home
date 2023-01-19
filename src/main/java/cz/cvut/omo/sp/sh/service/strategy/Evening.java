@@ -5,11 +5,9 @@ import cz.cvut.omo.sp.sh.model.gate.GateCondition;
 import cz.cvut.omo.sp.sh.model.gate.Window;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 
-public class Evening implements Strategy
-{
+public class Evening implements Strategy {
     @Override
-    public void setCondition(Door door, Window window)
-    {
+    public void setCondition(Door door, Window window) {
         boolean doorChanged;
         boolean windowChanged;
 
@@ -31,18 +29,15 @@ public class Evening implements Strategy
 
         if (windowChanged && !doorChanged) {
             HouseLogger.log("Window changed its state.");
-        }
-        else if (!windowChanged && doorChanged) {
+        } else if (!windowChanged && doorChanged) {
             HouseLogger.log("Door changed its state.");
-        }
-        else {
+        } else {
             HouseLogger.log("Door and window changed their state");
         }
     }
 
     @Override
-    public void setBlindsPosition(Window window)
-    {
+    public void setBlindsPosition(Window window) {
         window.setPosition(60);
         window.setAutomatic(false);
     }

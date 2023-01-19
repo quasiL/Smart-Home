@@ -7,28 +7,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 
-public class PDFExportElectricityConsumption implements Visitor
-{
+public class PDFExportElectricityConsumption implements Visitor {
     private final String file;
     private final Font catFont;
     private final Font smallBold;
 
-    public PDFExportElectricityConsumption()
-    {
+    public PDFExportElectricityConsumption() {
         file = "reports/ElectricityConsumptionPdf_" +
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH_mm_ss")) + ".pdf";
         catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
         smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
     }
 
-    public void export(List<Device> devices)
-    {
+    public void export(List<Device> devices) {
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(file));
@@ -65,15 +63,13 @@ public class PDFExportElectricityConsumption implements Visitor
         }
     }
 
-    private void addEmptyLine(Paragraph paragraph, int number)
-    {
+    private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
         }
     }
 
-    private void addTitlePage(Document document) throws DocumentException
-    {
+    private void addTitlePage(Document document) throws DocumentException {
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
         preface.add(new Paragraph("Total Electricity Consumption in the house report", catFont));
@@ -87,8 +83,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitClimateController(ClimateController climateController)
-    {
+    public String[] visitClimateController(ClimateController climateController) {
         HouseLogger.log("Statistics from all Climate Controllers for the report " + file + " was collected");
         return new String[]{
                 climateController.getName(),
@@ -98,8 +93,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitGateController(GateController gateController)
-    {
+    public String[] visitGateController(GateController gateController) {
         HouseLogger.log("Statistics from all Gate Controllers for the report " + file + " was collected");
         return new String[]{
                 gateController.getName(),
@@ -109,8 +103,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitLightController(LightController lightController)
-    {
+    public String[] visitLightController(LightController lightController) {
         HouseLogger.log("Statistics from all Light Controllers for the report " + file + " was collected");
         return new String[]{
                 lightController.getName(),
@@ -120,8 +113,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitWaterController(WaterController waterController)
-    {
+    public String[] visitWaterController(WaterController waterController) {
         HouseLogger.log("Statistics from all Water Controllers for the report " + file + " was collected");
         return new String[]{
                 waterController.getName(),
@@ -131,8 +123,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitSoundSystem(SoundSystem soundSystem)
-    {
+    public String[] visitSoundSystem(SoundSystem soundSystem) {
         HouseLogger.log("Statistics from the Sound System for the report " + file + " was collected");
         return new String[]{
                 soundSystem.getName(),
@@ -142,8 +133,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitSignaling(Signaling signaling)
-    {
+    public String[] visitSignaling(Signaling signaling) {
         HouseLogger.log("Statistics from the Signaling for the report " + file + " was collected");
         return new String[]{
                 signaling.getName(),
@@ -153,8 +143,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitSmokeDetector(SmokeDetector smokeDetector)
-    {
+    public String[] visitSmokeDetector(SmokeDetector smokeDetector) {
         HouseLogger.log("Statistics from all Smoke Detectors for the report " + file + " was collected");
         return new String[]{
                 smokeDetector.getName(),
@@ -164,8 +153,7 @@ public class PDFExportElectricityConsumption implements Visitor
     }
 
     @Override
-    public String[] visitTemperatureSensor(TemperatureSensor temperatureSensor)
-    {
+    public String[] visitTemperatureSensor(TemperatureSensor temperatureSensor) {
         HouseLogger.log("Statistics from all Temperature Sensors for the report " + file + " was collected");
         return new String[]{
                 temperatureSensor.getName(),

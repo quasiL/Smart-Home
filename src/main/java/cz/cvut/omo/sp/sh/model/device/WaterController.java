@@ -5,8 +5,7 @@ import cz.cvut.omo.sp.sh.service.HouseLogger;
 import cz.cvut.omo.sp.sh.service.observer.EventListener;
 import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 
-public class WaterController extends Device implements EventListener
-{
+public class WaterController extends Device implements EventListener {
     /**
      * Actual water consumption in the room
      */
@@ -18,16 +17,14 @@ public class WaterController extends Device implements EventListener
                            Battery battery,
                            NetworkSettings networkSettings,
                            int guarantee,
-                           int room)
-    {
+                           int room) {
         super(name, manufacturer, firmwareVersion, DeviceType.WATER_CONTROLLER, battery, networkSettings,
                 guarantee, room);
         this.waterConsumptionInTheRoom = 0;
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
@@ -48,16 +45,15 @@ public class WaterController extends Device implements EventListener
 
     /**
      * Get actual water consumption in the room
+     *
      * @return water consumption
      */
-    public int getWaterConsumptionInTheRoom()
-    {
+    public int getWaterConsumptionInTheRoom() {
         return waterConsumptionInTheRoom;
     }
 
     @Override
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return visitor.visitWaterController(this);
     }
 }

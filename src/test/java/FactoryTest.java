@@ -10,8 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-class FactoryTest
-{
+class FactoryTest {
     private EmptyHouse emptyHouse;
     private SimpleHouse simpleHouse;
     private ExtendedHouse extendedHouse;
@@ -20,8 +19,7 @@ class FactoryTest
     ExtendedHouseMaker extendedHouseMaker;
 
     @BeforeEach
-    void createsHouseMakers()
-    {
+    void createsHouseMakers() {
         emptyHouse = new EmptyHouse();
         simpleHouse = new SimpleHouse();
         extendedHouse = new ExtendedHouse();
@@ -32,30 +30,27 @@ class FactoryTest
 
     @Test
     @Order(0)
-    void checkFloorsInEmptyHouse_isNumberOfFloorsRight_returnsNumberOfRooms()
-    {
+    void checkFloorsInEmptyHouse_isNumberOfFloorsRight_returnsNumberOfRooms() {
         Assertions.assertEquals(
-                emptyHouse.getNumberOfFloors()*emptyHouse.getNumberOfRoomsPerFloor(),
+                emptyHouse.getNumberOfFloors() * emptyHouse.getNumberOfRoomsPerFloor(),
                 emptyHouseMaker.createHouse().getRooms().size()
         );
     }
 
     @Test
     @Order(1)
-    void checkFloorsInSimpleHouse_isNumberOfFloorsRight_returnsNumberOfRooms()
-    {
+    void checkFloorsInSimpleHouse_isNumberOfFloorsRight_returnsNumberOfRooms() {
         Assertions.assertEquals(
-                simpleHouse.getNumberOfFloors()*simpleHouse.getNumberOfRoomsPerFloor(),
+                simpleHouse.getNumberOfFloors() * simpleHouse.getNumberOfRoomsPerFloor(),
                 simpleHouseMaker.createHouse().getRooms().size()
         );
     }
 
     @Test
     @Order(2)
-    void checkFloorsInExtendedHouse_isNumberOfFloorsRight_returnsNumberOfRooms()
-    {
+    void checkFloorsInExtendedHouse_isNumberOfFloorsRight_returnsNumberOfRooms() {
         Assertions.assertEquals(
-                extendedHouse.getNumberOfFloors()*extendedHouse.getNumberOfRoomsPerFloor(),
+                extendedHouse.getNumberOfFloors() * extendedHouse.getNumberOfRoomsPerFloor(),
                 extendedHouseMaker.createHouse().getRooms().size()
         );
     }

@@ -10,8 +10,7 @@ import cz.cvut.omo.sp.sh.service.strategy.Morning;
 import cz.cvut.omo.sp.sh.service.strategy.Strategy;
 import cz.cvut.omo.sp.sh.service.visitor.Visitor;
 
-public class GateController extends Device implements EventListener
-{
+public class GateController extends Device implements EventListener {
     /**
      * Window in the room
      */
@@ -43,8 +42,7 @@ public class GateController extends Device implements EventListener
                           Battery battery,
                           NetworkSettings networkSettings,
                           int guarantee,
-                          int room)
-    {
+                          int room) {
         super(name, manufacturer, firmwareVersion, DeviceType.GATE_CONTROLLER, battery, networkSettings,
                 guarantee, room);
         this.window = new Window();
@@ -56,10 +54,10 @@ public class GateController extends Device implements EventListener
 
     /**
      * Method for changing actual strategy
+     *
      * @param strategy new strategy
      */
-    private void setStrategy(Strategy strategy)
-    {
+    private void setStrategy(Strategy strategy) {
         this.strategy = strategy;
         strategy.setBlindsPosition(window);
         strategy.setCondition(door, window);
@@ -68,16 +66,15 @@ public class GateController extends Device implements EventListener
 
     /**
      * Method for tests
+     *
      * @return Current strategy name
      */
-    public String getStrategy()
-    {
+    public String getStrategy() {
         return strategy.getClass().getSimpleName();
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Device " + name + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
@@ -102,8 +99,7 @@ public class GateController extends Device implements EventListener
     }
 
     @Override
-    public String[] accept(Visitor visitor)
-    {
+    public String[] accept(Visitor visitor) {
         return visitor.visitGateController(this);
     }
 }

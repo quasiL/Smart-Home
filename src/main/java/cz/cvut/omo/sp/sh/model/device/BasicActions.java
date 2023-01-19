@@ -1,7 +1,6 @@
 package cz.cvut.omo.sp.sh.model.device;
 
-public interface BasicActions
-{
+public interface BasicActions {
     /**
      * Method for restarting this device
      */

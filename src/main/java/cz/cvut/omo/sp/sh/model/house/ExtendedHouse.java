@@ -1,16 +1,13 @@
 package cz.cvut.omo.sp.sh.model.house;
 
-public class ExtendedHouse extends House
-{
+public class ExtendedHouse extends House {
     @Override
-    public int getNumberOfFloors()
-    {
+    public int getNumberOfFloors() {
         return config.getFloors("extended_house");
     }
 
     @Override
-    public int getNumberOfRoomsPerFloor()
-    {
+    public int getNumberOfRoomsPerFloor() {
         return config.getRooms("extended_house");
     }
 }

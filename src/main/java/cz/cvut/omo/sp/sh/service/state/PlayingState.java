@@ -3,29 +3,24 @@ package cz.cvut.omo.sp.sh.service.state;
 import cz.cvut.omo.sp.sh.model.device.SoundSystem;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 
-public class PlayingState extends State
-{
-    public PlayingState(SoundSystem soundSystem)
-    {
+public class PlayingState extends State {
+    public PlayingState(SoundSystem soundSystem) {
         super(soundSystem);
     }
 
     @Override
-    public void turnOn()
-    {
+    public void turnOn() {
         // Do nothing, since the sound system is already on
     }
 
     @Override
-    public void turnOff()
-    {
+    public void turnOff() {
         HouseLogger.log("Turning off the sound system...");
         getSoundSystem().setState(new OffState(getSoundSystem()));
     }
 
     @Override
-    public void playTrack(String track)
-    {
+    public void playTrack(String track) {
         if (getSoundSystem().getMusicTracks().contains(track)) {
             HouseLogger.log("Playing track: " + track);
             getSoundSystem().setCurrentTrack(track);
@@ -35,8 +30,7 @@ public class PlayingState extends State
     }
 
     @Override
-    public void nextTrack()
-    {
+    public void nextTrack() {
         int currentIndex = getSoundSystem().getMusicTracks().indexOf(getSoundSystem().getCurrentTrack());
         if (currentIndex < getSoundSystem().getMusicTracks().size() - 1) {
             String nextTrack = getSoundSystem().getMusicTracks().get(currentIndex + 1);
@@ -48,8 +42,7 @@ public class PlayingState extends State
     }
 
     @Override
-    public void previousTrack()
-    {
+    public void previousTrack() {
         int currentIndex = getSoundSystem().getMusicTracks().indexOf(getSoundSystem().getCurrentTrack());
         if (currentIndex > 0) {
             String previousTrack = getSoundSystem().getMusicTracks().get(currentIndex - 1);
@@ -61,15 +54,13 @@ public class PlayingState extends State
     }
 
     @Override
-    public void pause()
-    {
+    public void pause() {
         HouseLogger.log("Pausing music...");
         getSoundSystem().setState(new PausedState(getSoundSystem()));
     }
 
     @Override
-    public void resume()
-    {
+    public void resume() {
         // Do nothing, since the music is already playing
     }
 }

@@ -4,19 +4,16 @@ import cz.cvut.omo.sp.sh.model.Event;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 import cz.cvut.omo.sp.sh.service.observer.EventListener;
 
-public class Person extends Resident implements EventListener
-{
+public class Person extends Resident implements EventListener {
     private TypeOfAction action;
 
-    public Person(String name, int age, TypeOfAction action)
-    {
+    public Person(String name, int age, TypeOfAction action) {
         super(name, age);
         this.action = action;
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         HouseLogger.log("Person " + getName() + " get event " + event.getEventType());
         switch (event.getEventType()) {
             case CHANGE_ACTION -> setAction();
@@ -25,18 +22,15 @@ public class Person extends Resident implements EventListener
         }
     }
 
-    private void feedAnimal()
-    {
+    private void feedAnimal() {
         HouseLogger.log(getName() + " feeds animal");
     }
 
-    public TypeOfAction getAction()
-    {
+    public TypeOfAction getAction() {
         return action;
     }
 
-    private void setAction()
-    {
+    private void setAction() {
         if (this.action == TypeOfAction.REST) {
             this.action = TypeOfAction.SPORT;
             HouseLogger.log(getName() + " is currently exercising");

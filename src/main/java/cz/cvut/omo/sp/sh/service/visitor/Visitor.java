@@ -2,10 +2,10 @@ package cz.cvut.omo.sp.sh.service.visitor;
 
 import cz.cvut.omo.sp.sh.model.device.*;
 
-public interface Visitor
-{
+public interface Visitor {
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param climateController device
      * @return array of device parameters
      */
@@ -13,6 +13,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param gateController device
      * @return array of device parameters
      */
@@ -20,6 +21,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param lightController device
      * @return array of device parameters
      */
@@ -27,6 +29,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param waterController device
      * @return array of device parameters
      */
@@ -34,6 +37,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param soundSystem device
      * @return array of device parameters
      */
@@ -41,6 +45,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param signaling device
      * @return array of device parameters
      */
@@ -48,6 +53,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param smokeDetector device
      * @return array of device parameters
      */
@@ -55,6 +61,7 @@ public interface Visitor
 
     /**
      * Method for getting the parameters required by the visitor
+     *
      * @param temperatureSensor device
      * @return array of device parameters
      */

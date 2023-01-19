@@ -13,13 +13,11 @@ import cz.cvut.omo.sp.sh.service.observer.EventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmptyHouseMaker extends HouseMaker
-{
+public class EmptyHouseMaker extends HouseMaker {
     private final EmptyHouse house;
     private final List<Resident> residents;
 
-    public EmptyHouseMaker()
-    {
+    public EmptyHouseMaker() {
         this.house = new EmptyHouse();
 
         residents = new ArrayList<>();
@@ -35,19 +33,18 @@ public class EmptyHouseMaker extends HouseMaker
     }
 
     @Override
-    public EmptyHouse createHouse()
-    {
+    public EmptyHouse createHouse() {
         for (Resident resident : residents) {
-            house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)resident);
-            house.getEventHandler().getEventManager().subscribe(EventType.ANIMAL_HUNGRY, (EventListener)resident);
-            house.getEventHandler().getEventManager().subscribe(EventType.CHANGE_ACTION, (EventListener)resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.ANIMAL_HUNGRY, (EventListener) resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.CHANGE_ACTION, (EventListener) resident);
         }
 
-        for (int i=0; i<house.getNumberOfFloors(); i++) {
-            for (int j=0; j<house.getNumberOfRoomsPerFloor(); j++) {
+        for (int i = 0; i < house.getNumberOfFloors(); i++) {
+            for (int j = 0; j < house.getNumberOfRoomsPerFloor(); j++) {
 
                 Room room;
-                if (i+j == 0) {
+                if (i + j == 0) {
                     room = new Room(residents);
                 } else {
                     room = new Room();

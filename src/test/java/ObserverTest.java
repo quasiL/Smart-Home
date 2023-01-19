@@ -8,23 +8,20 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class ObserverTest
-{
+class ObserverTest {
     private EventManager eventManager;
     private ClimateController climateController;
     private Event firstTestEvent;
 
     @BeforeEach
-    void createEventManagerManuallyWithSomeEvents()
-    {
+    void createEventManagerManuallyWithSomeEvents() {
         eventManager = new EventManager(EventType.values());
         firstTestEvent = new Event(EventType.HOUR_HAS_PASSED);
     }
 
     @Test
     @Order(0)
-    void checkIfMethodUpdateWasCalledInListener_isMethodCalled_returnsUpdate()
-    {
+    void checkIfMethodUpdateWasCalledInListener_isMethodCalled_returnsUpdate() {
         climateController = Mockito.mock(ClimateController.class);
         eventManager.subscribe(firstTestEvent.getEventType(), climateController);
         eventManager.notify(firstTestEvent);
@@ -33,8 +30,7 @@ class ObserverTest
 
     @Test
     @Order(1)
-    void checkIfSubscribingWorks_isUnsubscribeGetNotify_returnsUpdate()
-    {
+    void checkIfSubscribingWorks_isUnsubscribeGetNotify_returnsUpdate() {
         climateController = Mockito.mock(ClimateController.class);
         eventManager.subscribe(firstTestEvent.getEventType(), climateController);
         eventManager.unsubscribe(firstTestEvent.getEventType(), climateController);

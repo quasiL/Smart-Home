@@ -4,27 +4,23 @@ import cz.cvut.omo.sp.sh.model.Event;
 import cz.cvut.omo.sp.sh.service.HouseLogger;
 import cz.cvut.omo.sp.sh.service.observer.EventListener;
 
-public class Animal extends Resident implements EventListener
-{
+public class Animal extends Resident implements EventListener {
     private final String kindOfAnimal;
     private final boolean hunger;
     private int hoursWithoutFood;
 
-    public Animal(String name, int age, String kindOfAnimal)
-    {
+    public Animal(String name, int age, String kindOfAnimal) {
         super(name, age);
         this.kindOfAnimal = kindOfAnimal;
         this.hunger = false;
     }
 
-    public String getKindOfAnimal()
-    {
+    public String getKindOfAnimal() {
         return kindOfAnimal;
     }
 
     @Override
-    public void update(Event event)
-    {
+    public void update(Event event) {
         switch (event.getEventType()) {
             case HOUR_HAS_PASSED -> {
                 HouseLogger.log(getKindOfAnimal() + " " + getName() + " get event " + event.getEventType());
@@ -40,18 +36,15 @@ public class Animal extends Resident implements EventListener
         }
     }
 
-    public boolean isHunger()
-    {
+    public boolean isHunger() {
         return hunger;
     }
 
-    public int getHoursWithoutFood()
-    {
+    public int getHoursWithoutFood() {
         return hoursWithoutFood;
     }
 
-    private void getFood()
-    {
+    private void getFood() {
         HouseLogger.log(getKindOfAnimal() + getName() + " eats");
     }
 }

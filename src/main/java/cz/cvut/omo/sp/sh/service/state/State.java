@@ -2,15 +2,13 @@ package cz.cvut.omo.sp.sh.service.state;
 
 import cz.cvut.omo.sp.sh.model.device.SoundSystem;
 
-public abstract class State
-{
+public abstract class State {
     /**
      * Music playback system
      */
     private final SoundSystem soundSystem;
 
-    protected State(SoundSystem soundSystem)
-    {
+    protected State(SoundSystem soundSystem) {
         this.soundSystem = soundSystem;
     }
 
@@ -26,6 +24,7 @@ public abstract class State
 
     /**
      * Method for playing a music track
+     *
      * @param track track
      */
     public abstract void playTrack(String track);
@@ -50,8 +49,7 @@ public abstract class State
      */
     public abstract void resume();
 
-    public SoundSystem getSoundSystem()
-    {
+    public SoundSystem getSoundSystem() {
         return soundSystem;
     }
 }

@@ -15,8 +15,7 @@ import cz.cvut.omo.sp.sh.service.observer.EventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtendedHouseMaker extends HouseMaker
-{
+public class ExtendedHouseMaker extends HouseMaker {
     private final ExtendedHouse house;
     private final List<Resident> residents;
     private final GateControllerBuilder gateControllerBuilder;
@@ -28,8 +27,7 @@ public class ExtendedHouseMaker extends HouseMaker
     private final TemperatureSensorBuilder temperatureSensorBuilder;
     private final SoundSystemBuilder soundSystemBuilder;
 
-    public ExtendedHouseMaker()
-    {
+    public ExtendedHouseMaker() {
         this.house = new ExtendedHouse();
         this.gateControllerBuilder = new GateControllerBuilder();
         this.lightControllerBuilder = new LightControllerBuilder();
@@ -53,15 +51,14 @@ public class ExtendedHouseMaker extends HouseMaker
     }
 
     @Override
-    public ExtendedHouse createHouse()
-    {
+    public ExtendedHouse createHouse() {
         subscribeResidents();
 
-        for (int i=0; i<house.getNumberOfFloors(); i++) {
-            for (int j=0; j<house.getNumberOfRoomsPerFloor(); j++) {
+        for (int i = 0; i < house.getNumberOfFloors(); i++) {
+            for (int j = 0; j < house.getNumberOfRoomsPerFloor(); j++) {
 
                 Room room;
-                if (i+j == 3) {
+                if (i + j == 3) {
                     room = new Room(residents);
                 } else {
                     room = new Room();
@@ -75,50 +72,47 @@ public class ExtendedHouseMaker extends HouseMaker
         return house;
     }
 
-    private void subscribeResidents()
-    {
+    private void subscribeResidents() {
         for (Resident resident : residents) {
-            house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)resident);
-            house.getEventHandler().getEventManager().subscribe(EventType.ANIMAL_HUNGRY, (EventListener)resident);
-            house.getEventHandler().getEventManager().subscribe(EventType.CHANGE_ACTION, (EventListener)resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.ANIMAL_HUNGRY, (EventListener) resident);
+            house.getEventHandler().getEventManager().subscribe(EventType.CHANGE_ACTION, (EventListener) resident);
         }
     }
 
-    private void subscribeSingleDevices(Device device)
-    {
+    private void subscribeSingleDevices(Device device) {
         switch (device.getType()) {
             case GATE_CONTROLLER -> {
-                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.EVENING, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.MORNING, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener)device);
+                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.EVENING, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.MORNING, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener) device);
             }
             case CLIMATE_CONTROLLER -> {
-                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.WARM, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.COLD, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener)device);
+                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.WARM, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.COLD, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener) device);
             }
             case SIGNALING -> {
-                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.FIRE, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener)device);
+                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.FIRE, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener) device);
             }
             case SOUND_SYSTEM -> {
-                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_ON, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_PAUSE, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_RESUME, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_NEXT_TRACK, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_OFF, (EventListener)device);
-                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener)device);
+                house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_ON, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_PAUSE, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_RESUME, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_NEXT_TRACK, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.SOUND_OFF, (EventListener) device);
+                house.getEventHandler().getEventManager().subscribe(EventType.FLOOD, (EventListener) device);
             }
             default -> HouseLogger.log("Unhandled device");
         }
     }
 
-    private void subscribeMultipleDevices(Device device)
-    {
+    private void subscribeMultipleDevices(Device device) {
         switch (device.getType()) {
             case LIGHT_CONTROLLER -> {
                 house.getEventHandler().getEventManager().subscribe(EventType.HOUR_HAS_PASSED, (EventListener) device);
@@ -145,9 +139,8 @@ public class ExtendedHouseMaker extends HouseMaker
         }
     }
 
-    private void addMultipleDevices()
-    {
-        for (int i=0; i<house.getRooms().size(); i++) {
+    private void addMultipleDevices() {
+        for (int i = 0; i < house.getRooms().size(); i++) {
 
             if (i == 0) {
                 director.buildGateController(gateControllerBuilder, 1);

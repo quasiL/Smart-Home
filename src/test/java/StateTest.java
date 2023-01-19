@@ -7,15 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-class StateTest
-{
+class StateTest {
     private SoundSystem soundSystem;
     private String track1;
     private String track2;
 
     @BeforeEach
-    void createSoundSystemForTestsManually()
-    {
+    void createSoundSystemForTestsManually() {
         soundSystem = new SoundSystem(
                 "Test Sound System",
                 "manufacture",
@@ -30,8 +28,7 @@ class StateTest
 
     @Test
     @Order(0)
-    void checkIfTrackSelectingWorks_isSelect_returnsNextTrack()
-    {
+    void checkIfTrackSelectingWorks_isSelect_returnsNextTrack() {
         soundSystem.turnOn();
         soundSystem.addMusicTrack(track1);
         soundSystem.addMusicTrack(track2);
